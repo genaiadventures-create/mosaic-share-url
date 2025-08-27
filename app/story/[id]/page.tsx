@@ -1,25 +1,22 @@
+// app/story/[id]/page.tsx
+
+"use client";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 export default function StoryRedirectPage({ params }: { params: { id: string } }) {
   const { id } = params;
-  const router = useRouter();
 
   useEffect(() => {
-    // Mobile deep link
     const appLink = `mosaic://story/storypage/${id}`;
-    // Fallback: open app if on mobile, else stay on web
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isMobile) {
       window.location.href = appLink;
-      // Optionally, after a delay, show fallback if app not installed
       setTimeout(() => {
-        // Stay on this page as fallback
+        // Optionally show fallback after delay
       }, 2000);
     }
-    // else: show fallback web content below
-  }, [id, router]);
+  }, [id]);
 
   return (
     <div style={{ textAlign: "center", marginTop: 80 }}>
