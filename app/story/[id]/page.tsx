@@ -23,7 +23,7 @@ export default function StoryRedirectPage({ params }: { params: { id: string } }
       <h2>Open in Mosaic App</h2>
       <p>
         If you have the Mosaic app installed, this story should open automatically.<br />
-        If not, you can <a href={`mosaic://story/storypage/${id}`}>open it in the app</a> or download Mosaic from the app store.
+        If not, you can <a href={`mosaic://story/full/${id}`}>open it in the app</a> or download Mosaic from the app store.
       </p>
       <p>
         <a href={`mosaic://story/storypage/${id}`} style={{ fontSize: 18, color: "#7c3aed" }}>
