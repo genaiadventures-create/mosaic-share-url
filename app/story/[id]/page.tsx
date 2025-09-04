@@ -7,7 +7,7 @@ export default function StoryRedirectPage({ params }: { params: { id: string } }
   const { id } = params;
 
   useEffect(() => {
-    const appLink = `mosaic://story/storypage/${id}`;
+    const appLink = `mosaic://story/detail/${id}`;
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isMobile) {
@@ -23,10 +23,10 @@ export default function StoryRedirectPage({ params }: { params: { id: string } }
       <h2>Open in Mosaic App</h2>
       <p>
         If you have the Mosaic app installed, this story should open automatically.<br />
-        If not, you can <a href={`mosaic://story/storypage/${id}`}>open it in the app</a> or download Mosaic from the app store.
+        If not, you can <a href={`mosaic://story/detail/${id}`}>open it in the app</a> or download Mosaic from the app store.
       </p>
       <p>
-        <a href={`mosaic://story/storypage/${id}`} style={{ fontSize: 18, color: "#7c3aed" }}>
+        <a href={`mosaic://story/detail/${id}`} style={{ fontSize: 18, color: "#7c3aed" }}>
           Open in App
         </a>
       </p>
