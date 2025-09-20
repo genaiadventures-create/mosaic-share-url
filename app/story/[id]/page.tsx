@@ -37,3 +37,5 @@ export default function StoryRedirectPage({ params }: { params: { id: string } }
     </div>
   );
 }
+
+// Mosaic Web app
