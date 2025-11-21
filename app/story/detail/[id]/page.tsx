@@ -1,5 +1,4 @@
-export const dynamic = "force-dynamic";
-("use client");
+"use client";
 import { useEffect } from "react";
 
 export default function StoryDetailRedirectPage({
@@ -60,3 +59,5 @@ export default function StoryDetailRedirectPage({
     </div>
   );
 }
+
+export const dynamic = "force-dynamic";
