@@ -52,7 +52,7 @@ export default function StoryRedirectPage({
         </a>{" "}
         |{" "}
         <a
-          href="https://play.google.com/store/apps"
+          href="https://play.google.com/store/apps/details?id=com.gitcuber369rn.Mosaic"
           target="_blank"
           rel="noopener noreferrer"
         >
