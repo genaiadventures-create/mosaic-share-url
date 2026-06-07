@@ -1,12 +1,12 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, use } from "react";
 
 export default function StoryDetailRedirectPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const { id } = params;
+  const { id } = use(params);
 
   useEffect(() => {
     const appLink = `mosaic://story/detail/${id}`;

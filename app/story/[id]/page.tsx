@@ -1,15 +1,15 @@
 // app/story/[id]/page.tsx
 
 "use client";
-import { useEffect } from "react";
+import { useEffect, use } from "react";
 export const dynamic = "force-dynamic";
 
 export default function StoryRedirectPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const { id } = params;
+  const { id } = use(params);
 
   useEffect(() => {
     const appLink = `mosaic://story/detail/${id}`;
