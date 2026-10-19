@@ -1,33 +1,12 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-
-// Acquisition channels accepted via ?ref=<channel>. Anything else in `ref` is
-// treated as a legacy referral code (the app shares /get?ref=<CODE>).
-const CHANNELS = ["yt", "ig", "tt", "kdp", "dm", "fb", "rd"];
-const CHANNEL_COOKIE = "mosaic_ref";
-const COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
-
-function readChannelCookie(): string {
-  const match = document.cookie.match(/(?:^|; )mosaic_ref=([^;]*)/);
-  const value = match ? decodeURIComponent(match[1]) : "";
-  return CHANNELS.includes(value) ? value : "";
-}
-
-function withParams(base: string, params: Record<string, string>): string {
-  const qs = new URLSearchParams(
-    Object.entries(params).filter(([, v]) => v)
-  ).toString();
-  if (!qs) return base;
-  return base + (base.includes("?") ? "&" : "?") + qs;
-}
+import { ANDROID_URL, IOS_URL, appUrl, parseReferral, readChannelCookie, rememberChannel, withParams } from "../referral";
 
 function GetPageInner() {
   const searchParams = useSearchParams();
-  const refParam = searchParams.get("ref") ?? "";
-  const refIsChannel = CHANNELS.includes(refParam);
-  const referralCode = searchParams.get("code") ?? (refIsChannel ? "" : refParam);
-  const [channel, setChannel] = useState(refIsChannel ? refParam : "");
+  const { channel: explicitChannel, referralCode } = parseReferral(searchParams.get("ref"), searchParams.get("code"));
+  const [channel, setChannel] = useState(explicitChannel);
 
   useEffect(() => {
     if (referralCode) {
@@ -36,23 +15,17 @@ function GetPageInner() {
   }, [referralCode]);
 
   useEffect(() => {
-    if (refIsChannel) {
-      document.cookie = `${CHANNEL_COOKIE}=${refParam}; Max-Age=${COOKIE_MAX_AGE}; Path=/; SameSite=Lax; Secure`;
-      setChannel(refParam);
+    if (explicitChannel) {
+      rememberChannel(explicitChannel);
+      setChannel(explicitChannel);
     } else {
-      setChannel(readChannelCookie());
+      setChannel(readChannelCookie(document.cookie));
     }
-  }, [refIsChannel, refParam]);
+  }, [explicitChannel]);
 
-  const appDeepLink = withParams("mosaic://", { code: referralCode, ref: channel });
-  const iosUrl = withParams(
-    "https://apps.apple.com/us/app/mosaic-ai/id6751470484",
-    { ref: channel }
-  );
-  const androidUrl = withParams(
-    "https://play.google.com/store/apps/details?id=com.gitcuber369rn.Mosaic",
-    { ref: channel }
-  );
+  const appDeepLink = appUrl(channel, referralCode);
+  const iosUrl = withParams(IOS_URL, { ref: channel });
+  const androidUrl = withParams(ANDROID_URL, { ref: channel });
 
   return (
     <main

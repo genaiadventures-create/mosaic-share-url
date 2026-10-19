@@ -1,18 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
+import { rememberChannel } from "../referral";
 
-export default function ReferralHandler({ referralCode }: { referralCode?: string }) {
+export default function ReferralHandler({ referralCode, channel }: { referralCode: string; channel: string }) {
   useEffect(() => {
-    if (!referralCode) return;
-
-    sessionStorage.setItem("mosaic_referral_code", referralCode);
-
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobile) {
-      window.location.href = `mosaicai://referral/${referralCode}`;
-    }
-  }, [referralCode]);
-
+    if (referralCode) sessionStorage.setItem("mosaic_ref", referralCode);
+    if (channel) rememberChannel(channel);
+  }, [referralCode, channel]);
   return null;
 }

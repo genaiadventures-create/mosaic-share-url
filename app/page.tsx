@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import ReferralHandler from "./components/ReferralHandler";
-
-const IOS_URL = "https://apps.apple.com/us/app/mosaic-ai/id6751470484";
-const ANDROID_URL =
-  "https://play.google.com/store/apps/details?id=com.gitcuber369rn.Mosaic";
+import { ANDROID_URL, IOS_URL, getUrl, parseReferral } from "./referral";
 
 type SearchParams = Promise<{ ref?: string; [key: string]: string | string[] | undefined }>;
 
@@ -14,14 +11,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const params = await searchParams;
   const ref = typeof params.ref === "string" ? params.ref : undefined;
-  const title = ref
-    ? `${ref} invited you to Mosaic`
+  const { referralCode } = parseReferral(ref, undefined);
+  // Only a real referral code is an invitation; channels (yt/ig/...) and plain visits get the default title.
+  const title = referralCode
+    ? `${referralCode} invited you to Mosaic`
     : "Mosaic — Create Magical Bedtime Stories in 10 Seconds";
 
   return {
     title,
     description:
-      "AI-powered stories personalized for your child — with narration and illustrations. Join 1,000+ families today.",
+      "AI-powered bedtime stories personalized for your child — with narration and illustrations. Create magical stories in seconds.",
     openGraph: {
       title: "Mosaic — Magical AI Bedtime Stories for Kids",
       description:
@@ -158,15 +157,16 @@ export default async function HomePage({
 }) {
   const params = await searchParams;
   const ref = typeof params.ref === "string" ? params.ref : undefined;
+  const { channel, referralCode } = parseReferral(ref, undefined);
 
   return (
     <main className="min-h-screen bg-[#0f0a1e] text-white">
-      <ReferralHandler referralCode={ref} />
+      <ReferralHandler referralCode={referralCode} channel={channel} />
 
-      {ref && (
+      {referralCode && (
         <div className="bg-[#7c3aed] text-white text-center py-3 px-4 text-sm font-semibold">
           You were invited by{" "}
-          <span className="font-bold uppercase tracking-wide">{ref}</span>!
+          <span className="font-bold uppercase tracking-wide">{referralCode}</span>!
           Download Mosaic to get started.
         </div>
       )}
@@ -219,10 +219,10 @@ export default async function HomePage({
 
           <DownloadBadges />
 
-          {ref && (
+          {referralCode && (
             <div className="mt-6">
               <a
-                href={`mosaicai://referral/${ref}`}
+                href={getUrl(channel, referralCode)}
                 className="inline-flex items-center gap-2 bg-[#7c3aed] text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-[#6d28d9] transition-colors text-lg"
               >
                 Open in Mosaic App
@@ -249,11 +249,16 @@ export default async function HomePage({
       <div className="text-center py-4 px-6">
         <p className="text-gray-400 text-sm">
           <span className="text-[#B793FF] font-semibold">
-            Trusted by parents of 1,000+ kids
+            AI bedtime stories with narration & illustrations
           </span>
           {" · "}
-          <span className="text-yellow-400 font-semibold">4.8</span>
-          {" on App Store"}
+          <span className="text-yellow-400 font-semibold">
+            Personalized for every child
+          </span>
+          {" · "}
+          <span className="text-green-400 font-semibold">
+            Safe & ad-free
+          </span>
         </p>
       </div>
 
