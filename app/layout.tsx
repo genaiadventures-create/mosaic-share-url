@@ -13,8 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mosaic - AI Story Generation App for children",
-  description: "An AI-powered story generation app designed for children.",
+  title: "Mosaic: AI Bedtime Stories for Kids — Personalized, Illustrated, Narrated",
+  description:
+    "Create a personalized bedtime story for your child in seconds: their name, their interests, illustrated chapters read aloud. Free to try on iOS and Android.",
+  itunes: { appId: "6751470484" },
 };
 
 export default function RootLayout({
