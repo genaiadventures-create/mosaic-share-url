@@ -19,6 +19,8 @@ export async function generateMetadata({
 
   return {
     title,
+    // share.mosaicai.in keeps this page for referral/deep links; mosaicai.in is the canonical homepage.
+    alternates: { canonical: "https://mosaicai.in/" },
     description:
       "AI-powered bedtime stories personalized for your child — with narration and illustrations. Create magical stories in seconds.",
     openGraph: {
