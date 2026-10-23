@@ -11,6 +11,52 @@ export const H1 = "Bedtime stories where your child is the hero.";
 export const PRICE_LINE =
   "Free to try: your first 5 stories are on us. Then Mosaic Premium is $4.99 a month and adds 30 stories each month.";
 
+export type Book = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  asin: string;
+  isbn?: string;
+  price: string;
+  cover: string;
+  alt: string;
+  blurb: string;
+};
+
+// Both paperbacks are live on Amazon (KDP Bookshelf, published 2026-10-23). Prices are the list prices set in KDP.
+export const BOOKS: Book[] = [
+  {
+    slug: "space-pals",
+    title: "Space Pals: My Galactic Adventure",
+    subtitle: "A color-and-write story book",
+    asin: "B0HNZG1QYB",
+    isbn: "9798164090173",
+    price: "9.99",
+    cover: "/books/space-pals-cover.jpg",
+    alt: "Space Pals paperback cover: a cat astronaut, a bunny and a small robot float beside a red rocket above the moon.",
+    blurb:
+      "Blast off in your own rocket, float with a cat astronaut and help the Space Pals rescue a little robot before a campfire night on the moon.",
+  },
+  {
+    slug: "arjuna",
+    title: "Arjuna's Archery School",
+    subtitle: "A Mahabharata story for kids",
+    asin: "B0HNZGGLMF",
+    price: "9.99",
+    cover: "/books/arjuna-cover.jpg",
+    alt: "Arjuna's Archery School paperback cover: a young archer draws his bow beside a peacock, a wooden bird hanging in the tree above.",
+    blurb:
+      "Join young Arjuna at a forest school of round huts and peacocks, and find out why he sees only the bird's eye. Gentle lessons about focus and practice; no battles.",
+  },
+];
+
+export const BOOKS_LINE =
+  "Each left page tells one scene with blanks your child fills in. The facing page is the picture, ready to colour to match. 22 scenes, 22 pictures, written to you, so the reader is the hero.";
+
+export function amazonUrl(asin: string) {
+  return `https://www.amazon.com/dp/${asin}`;
+}
+
 export const FAQ: { q: string; a: string }[] = [
   {
     q: "What is Mosaic?",
@@ -35,6 +81,10 @@ export const FAQ: { q: string; a: string }[] = [
   {
     q: "Is Mosaic safe for kids? Does it use AI?",
     a: "Mosaic uses AI to write, illustrate and narrate each story. Stories are written to be age-appropriate, with a calm ending, and the app shows no ads. It is made for parents to use with their kids, so a grown-up sets it up and can read every story first.",
+  },
+  {
+    q: "Is there a Mosaic book I can hold?",
+    a: "Yes. Two colour-and-write paperbacks, Space Pals: My Galactic Adventure and Arjuna's Archery School, are on Amazon at $9.99 each. Your child fills in the blanks on each story page and colours the picture opposite.",
   },
   {
     q: "How is this different from a personalised print book?",
@@ -99,6 +149,25 @@ export function jsonLd() {
           },
         ],
       },
+      ...BOOKS.map((b) => ({
+        "@type": "Book",
+        "@id": `${SITE_URL}/#book-${b.slug}`,
+        name: `${b.title}: ${b.subtitle}`,
+        author: { "@type": "Organization", name: "GenAI Adventures" },
+        publisher: { "@id": org },
+        bookFormat: "https://schema.org/Paperback",
+        image: `${SITE_URL}${b.cover}`,
+        ...(b.isbn ? { isbn: b.isbn } : {}),
+        url: amazonUrl(b.asin),
+        offers: {
+          "@type": "Offer",
+          price: b.price,
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          url: amazonUrl(b.asin),
+          seller: { "@type": "Organization", name: "Amazon" },
+        },
+      })),
       {
         "@type": "FAQPage",
         mainEntity: FAQ.map(({ q, a }) => ({

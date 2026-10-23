@@ -6,7 +6,7 @@ import HeroVideo from "./components/HeroVideo";
 import ReadAlong, { type Word } from "./components/ReadAlong";
 import RevealObserver from "./components/RevealObserver";
 import StoreBadges from "./components/StoreBadges";
-import { FAQ, H1, PRICE_LINE, SITE_URL, jsonLd } from "./content";
+import { BOOKS, BOOKS_LINE, FAQ, H1, PRICE_LINE, SITE_URL, amazonUrl, jsonLd } from "./content";
 import { kalam, satoshi } from "./fonts";
 import "./home.css";
 
@@ -102,6 +102,7 @@ export default function HomePage() {
         </Link>
         <nav aria-label="Main" className="nav__links">
           <a href="#how" className="nav__link">How it works</a>
+          <a href="#books" className="nav__link">Books</a>
           <a href="#get" className="btn-primary">Get the app</a>
         </nav>
       </header>
@@ -228,6 +229,32 @@ export default function HomePage() {
                   <span className="story-text tile__line">&ldquo;{t.line}&rdquo;</span>
                 </figcaption>
               </figure>
+            ))}
+          </div>
+        </section>
+
+        <section id="books" className="section wrap" aria-labelledby="books-title">
+          <div className="books__head" data-reveal>
+            <h2 id="books-title" className="h2">Is there a Mosaic book I can hold?</h2>
+            <p className="lead">Two paperbacks, on Amazon now.</p>
+            <p className="body books__how">{BOOKS_LINE}</p>
+          </div>
+          <div className="books">
+            {BOOKS.map((b) => (
+              <article key={b.slug} className="book" data-reveal>
+                <a href={amazonUrl(b.asin)} className="book__cover" target="_blank" rel="noopener">
+                  <Image src={b.cover} alt={b.alt} width={800} height={1034} sizes="(min-width: 768px) 320px, 70vw" />
+                </a>
+                <div className="book__text">
+                  <h3 className="book__title">{b.title}</h3>
+                  <p className="book__sub">{b.subtitle}</p>
+                  <p className="body book__blurb">{b.blurb}</p>
+                  <p className="small">Paperback, 50 pages, ages 5 to 8. ${b.price} on Amazon.</p>
+                  <a href={amazonUrl(b.asin)} className="btn-ghost book__buy" target="_blank" rel="noopener">
+                    Buy on Amazon
+                  </a>
+                </div>
+              </article>
             ))}
           </div>
         </section>
