@@ -42,6 +42,7 @@ export const BOOKS: Book[] = [
     title: "Arjuna's Archery School",
     subtitle: "A Mahabharata story for kids",
     asin: "B0HNZGGLMF",
+    isbn: "9798164096427",
     price: "9.99",
     cover: "/books/arjuna-cover.jpg",
     alt: "Arjuna's Archery School paperback cover: a young archer draws his bow beside a peacock, a wooden bird hanging in the tree above.",
