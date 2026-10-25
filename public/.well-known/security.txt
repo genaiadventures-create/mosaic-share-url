@@ -1,0 +1,5 @@
+Contact: mailto:support@mosaicai.in
+Expires: 2027-10-24T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://mosaicai.in/.well-known/security.txt
+Canonical: https://share.mosaicai.in/.well-known/security.txt
