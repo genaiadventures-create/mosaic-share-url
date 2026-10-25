@@ -10,9 +10,9 @@ describe("host rewrites", () => {
     assert.deepEqual(hostRewrites.map(({ source, destination }) => [source, destination]), [
       ["/", "/home"],
       ["/books", "/home/books"],
-      ["/best-personalized-bedtime-story-app", "/best-personalized-bedtime-story-app"],
-      ["/mahabharata-story-for-kids-book", "/mahabharata-story-for-kids-book"],
-      ["/color-and-write-books-ages-5-8", "/color-and-write-books-ages-5-8"],
+      ["/best-personalized-bedtime-story-app", "/home/best-personalized-bedtime-story-app"],
+      ["/mahabharata-story-for-kids-book", "/home/mahabharata-story-for-kids-book"],
+      ["/color-and-write-books-ages-5-8", "/home/color-and-write-books-ages-5-8"],
     ]);
     for (const rule of hostRewrites) {
       assert.equal(rule.has[0].type, "host");

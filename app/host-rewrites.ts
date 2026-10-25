@@ -1,5 +1,5 @@
 // Host-based routing: the marketing site lives at mosaicai.in, the share/referral
-// landing stays at share.mosaicai.in. Root and books are marketing-only rewrites;
+// landing stays at share.mosaicai.in. Root, books and the GEO pages are marketing-only rewrites;
 // other routes (/get, /story/*, /privacy-policy, AASA, verification files) are shared.
 export const MARKETING_HOST_PATTERN = "(www\\.)?mosaicai\\.in";
 
@@ -17,16 +17,16 @@ export const hostRewrites = [
   {
     source: "/best-personalized-bedtime-story-app",
     has: [{ type: "host" as const, value: MARKETING_HOST_PATTERN }],
-    destination: "/best-personalized-bedtime-story-app",
+    destination: "/home/best-personalized-bedtime-story-app",
   },
   {
     source: "/mahabharata-story-for-kids-book",
     has: [{ type: "host" as const, value: MARKETING_HOST_PATTERN }],
-    destination: "/mahabharata-story-for-kids-book",
+    destination: "/home/mahabharata-story-for-kids-book",
   },
   {
     source: "/color-and-write-books-ages-5-8",
     has: [{ type: "host" as const, value: MARKETING_HOST_PATTERN }],
-    destination: "/color-and-write-books-ages-5-8",
+    destination: "/home/color-and-write-books-ages-5-8",
   },
 ];

@@ -18,4 +18,13 @@ describe("robots", () => {
     assert.ok(disallow.includes("/story/"));
     assert.ok(disallow.includes("/video/"));
   });
+
+  it("explicitly allows OAI-SearchBot and GPTBot in separate groups with the same blocks", () => {
+    for (const bot of ["OAI-SearchBot", "GPTBot"]) {
+      const group = rules.find((r) => r.userAgent === bot);
+      assert.ok(group, bot);
+      assert.equal(group.allow, "/");
+      assert.deepEqual([group.disallow ?? []].flat(), disallow);
+    }
+  });
 });

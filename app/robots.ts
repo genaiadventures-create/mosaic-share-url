@@ -1,19 +1,18 @@
 import type { MetadataRoute } from "next";
 
+// Paths no crawler should index. /story/ and /video/ are per-child share pages.
+const DISALLOW = ["/get", "/appsubmission", "/story/", "/video/"];
+
 export default function robots(): MetadataRoute.Robots {
   // ## AI crawlers
-  // Both GPTBot and OAI-SearchBot are allowed (no Disallow rule) because the
-  // marketing site is public, contains no private data, and we want our content
-  // discoverable in AI-powered search results. The existing "*" rule with allow: "/"
-  // already permits them; no additional rule is needed.
+  // OAI-SearchBot (ChatGPT search) and GPTBot are explicitly allowed so the
+  // marketing and GEO pages are discoverable in AI search. A crawler that
+  // matches a named group ignores "*", so each named group repeats DISALLOW.
   return {
     rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-        // /story/ and /video/ are per-child share pages and must not be indexed.
-        disallow: ["/get", "/appsubmission", "/story/", "/video/"],
-      },
+      { userAgent: "*", allow: "/", disallow: DISALLOW },
+      { userAgent: "OAI-SearchBot", allow: "/", disallow: DISALLOW },
+      { userAgent: "GPTBot", allow: "/", disallow: DISALLOW },
     ],
     sitemap: "https://mosaicai.in/sitemap.xml",
     host: "https://mosaicai.in",
