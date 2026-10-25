@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, use } from "react";
+import { storyDeepLink } from "../../../deep-link";
 
 export default function StoryDetailRedirectPage({
   params,
@@ -7,9 +8,10 @@ export default function StoryDetailRedirectPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
+  const appLink = storyDeepLink(id);
 
   useEffect(() => {
-    const appLink = `mosaic://story/detail/${id}`;
+    if (!appLink) return;
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isMobile) {
@@ -18,7 +20,7 @@ export default function StoryDetailRedirectPage({
         // fallback UI could be shown after a delay if desired
       }, 2000);
     }
-  }, [id]);
+  }, [appLink]);
 
   return (
     <div style={{ textAlign: "center", marginTop: 80 }}>
@@ -28,17 +30,23 @@ export default function StoryDetailRedirectPage({
         automatically.
         <br />
         If not, you can{" "}
-        <a href={`mosaic://story/detail/${id}`}>open it in the app</a> or
+        {appLink && (
+          <>
+            <a href={appLink}>open it in the app</a> or{" "}
+          </>
+        )}
         download Mosaic from the app store.
       </p>
-      <p>
-        <a
-          href={`mosaic://story/detail/${id}`}
-          style={{ fontSize: 18, color: "#7c3aed" }}
-        >
-          Open in App
-        </a>
-      </p>
+      {appLink && (
+        <p>
+          <a
+            href={appLink}
+            style={{ fontSize: 18, color: "#7c3aed" }}
+          >
+            Open in App
+          </a>
+        </p>
+      )}
       <p>
         <a
           href="https://apps.apple.com/us/app/mosaic-ai/id6751470484"

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, use } from "react";
+import { videoDeepLink } from "../../deep-link";
 export const dynamic = "force-dynamic";
 
 export default function VideoRedirectPage({
@@ -8,15 +9,16 @@ export default function VideoRedirectPage({
     params: Promise<{ id: string }>;
 }) {
     const { id } = use(params);
+    const appLink = videoDeepLink(id);
 
     useEffect(() => {
-        const appLink = `mosaic://video/${id}`;
+        if (!appLink) return;
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
         if (isMobile) {
             window.location.href = appLink;
         }
-    }, [id]);
+    }, [appLink]);
 
     return (
         <div style={{ textAlign: "center", marginTop: 80, fontFamily: "system-ui, sans-serif" }}>
@@ -26,17 +28,23 @@ export default function VideoRedirectPage({
                 automatically.
                 <br />
                 If not, you can{" "}
-                <a href={`mosaic://video/${id}`} style={{ color: "#7c3aed" }}>open it in the app</a> or
+                {appLink && (
+                    <>
+                        <a href={appLink} style={{ color: "#7c3aed" }}>open it in the app</a> or{" "}
+                    </>
+                )}
                 download Mosaic from the app store.
             </p>
-            <p style={{ margin: "20px 0" }}>
-                <a
-                    href={`mosaic://video/${id}`}
-                    style={{ fontSize: 18, color: "#7c3aed", fontWeight: "bold", textDecoration: "none" }}
-                >
-                    Open in App
-                </a>
-            </p>
+            {appLink && (
+                <p style={{ margin: "20px 0" }}>
+                    <a
+                        href={appLink}
+                        style={{ fontSize: 18, color: "#7c3aed", fontWeight: "bold", textDecoration: "none" }}
+                    >
+                        Open in App
+                    </a>
+                </p>
+            )}
             <p style={{ marginTop: 40 }}>
                 <a
                     href="https://apps.apple.com/us/app/mosaic-ai/id6751470484"
