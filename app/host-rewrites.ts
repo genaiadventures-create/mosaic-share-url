@@ -14,4 +14,19 @@ export const hostRewrites = [
     has: [{ type: "host" as const, value: MARKETING_HOST_PATTERN }],
     destination: "/home/books",
   },
+  {
+    source: "/best-personalized-bedtime-story-app",
+    has: [{ type: "host" as const, value: MARKETING_HOST_PATTERN }],
+    destination: "/best-personalized-bedtime-story-app",
+  },
+  {
+    source: "/mahabharata-story-for-kids-book",
+    has: [{ type: "host" as const, value: MARKETING_HOST_PATTERN }],
+    destination: "/mahabharata-story-for-kids-book",
+  },
+  {
+    source: "/color-and-write-books-ages-5-8",
+    has: [{ type: "host" as const, value: MARKETING_HOST_PATTERN }],
+    destination: "/color-and-write-books-ages-5-8",
+  },
 ];

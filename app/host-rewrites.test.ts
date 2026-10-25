@@ -8,7 +8,11 @@ const matches = (host: string) => new RegExp(`^${MARKETING_HOST_PATTERN}$`).test
 describe("host rewrites", () => {
   it("rewrites root and books on the marketing host only", () => {
     assert.deepEqual(hostRewrites.map(({ source, destination }) => [source, destination]), [
-      ["/", "/home"], ["/books", "/home/books"],
+      ["/", "/home"],
+      ["/books", "/home/books"],
+      ["/best-personalized-bedtime-story-app", "/best-personalized-bedtime-story-app"],
+      ["/mahabharata-story-for-kids-book", "/mahabharata-story-for-kids-book"],
+      ["/color-and-write-books-ages-5-8", "/color-and-write-books-ages-5-8"],
     ]);
     for (const rule of hostRewrites) {
       assert.equal(rule.has[0].type, "host");
