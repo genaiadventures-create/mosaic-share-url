@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import allWords from "../../public/story-audio/kayden_ch1.words.json";
+import BooksHashRedirect from "./components/BooksHashRedirect";
 import HeroVideo from "./components/HeroVideo";
 import ReadAlong, { type Word } from "./components/ReadAlong";
 import RevealObserver from "./components/RevealObserver";
@@ -92,6 +93,7 @@ export default function HomePage() {
 
   return (
     <div className={`mh ${satoshi.variable} ${kalam.variable}`}>
+      <BooksHashRedirect />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: ld }} />
       <a className="skip" href="#main">Skip to content</a>
 

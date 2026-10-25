@@ -6,10 +6,14 @@ import { MARKETING_HOST_PATTERN, hostRewrites } from "./host-rewrites.ts";
 const matches = (host: string) => new RegExp(`^${MARKETING_HOST_PATTERN}$`).test(host);
 
 describe("host rewrites", () => {
-  it("rewrites only the root path to /home", () => {
-    assert.equal(hostRewrites.length, 1);
-    assert.equal(hostRewrites[0].source, "/");
-    assert.equal(hostRewrites[0].destination, "/home");
+  it("rewrites root and books on the marketing host only", () => {
+    assert.deepEqual(hostRewrites.map(({ source, destination }) => [source, destination]), [
+      ["/", "/home"], ["/books", "/home/books"],
+    ]);
+    for (const rule of hostRewrites) {
+      assert.equal(rule.has[0].type, "host");
+      assert.equal(rule.has[0].value, MARKETING_HOST_PATTERN);
+    }
   });
 
   it("matches the marketing hosts", () => {
