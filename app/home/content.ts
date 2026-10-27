@@ -1,6 +1,6 @@
 // Copy shared by the visible page and its JSON-LD, so the two never drift apart.
 // Every claim here is checked against skills/DESIGN_BRIEF.md section 10.
-import { ANDROID_URL } from "../referral";
+import { ANDROID_URL } from "../referral.ts";
 
 export const SITE_URL = "https://mosaicai.in";
 export const IOS_URL = "https://apps.apple.com/us/app/mosaic-create-bedtime-stories/id6751470484";
