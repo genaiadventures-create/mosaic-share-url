@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   description:
     "Create a personalized bedtime story for your child in seconds: their name, their interests, illustrated chapters read aloud. Free to try on iOS and Android.",
   itunes: { appId: "6751470484" },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
