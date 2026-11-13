@@ -26,8 +26,8 @@ export default function StoryRedirectPage({
   }, [appLink]);
 
   return (
-    <div style={{ textAlign: "center", marginTop: 80 }}>
-      <h2>Open in Mosaic App</h2>
+    <main style={{ textAlign: "center", marginTop: 80 }}>
+      <h1>Open in Mosaic App</h1>
       <p>
         If you have the Mosaic app installed, this story should open
         automatically.
@@ -35,7 +35,7 @@ export default function StoryRedirectPage({
         If not, you can{" "}
         {appLink && (
           <>
-            <a href={appLink}>open it in the app</a> or{" "}
+            <a href={appLink} className="share-link underline">open it in the app</a> or{" "}
           </>
         )}
         download Mosaic from the app store.
@@ -44,7 +44,8 @@ export default function StoryRedirectPage({
         <p>
           <a
             href={appLink}
-            style={{ fontSize: 18, color: "#7c3aed" }}
+            className="share-link"
+            style={{ fontSize: 18 }}
           >
             Open in App
           </a>
@@ -52,7 +53,7 @@ export default function StoryRedirectPage({
       )}
       <p>
         <a
-          href="https://apps.apple.com/app"
+          href="https://apps.apple.com/us/app/mosaic-ai/id6751470484"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -67,7 +68,7 @@ export default function StoryRedirectPage({
           Download for Android
         </a>
       </p>
-    </div>
+    </main>
   );
 }
 

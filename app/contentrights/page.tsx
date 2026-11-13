@@ -2,7 +2,7 @@ import React from 'react'
 
 const ContentRights = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <main className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-sm">
         <h1 className="text-3xl font-bold text-gray-900 mb-6">Content Rights Information for Mosaic AI Story Maker</h1>
         <p className="text-sm text-gray-600 mb-8">Last Updated: September 2025</p>
@@ -345,7 +345,7 @@ const ContentRights = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 

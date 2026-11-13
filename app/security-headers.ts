@@ -20,6 +20,10 @@ export const CONTENT_SECURITY_POLICY = [
   "frame-ancestors 'none'",
 ].join("; ");
 
+// Per-family share pages: never indexed, even when a crawler skips robots.txt.
+export const SHARE_PAGE_SOURCES = ["/story/:path*", "/video/:path*"];
+export const NOINDEX_HEADER = { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" };
+
 export const securityHeaders = [
   { key: "Content-Security-Policy", value: CONTENT_SECURITY_POLICY },
   { key: "X-Content-Type-Options", value: "nosniff" },

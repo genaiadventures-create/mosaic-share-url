@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 import { hostRewrites } from "./app/host-rewrites";
-import { securityHeaders } from "./app/security-headers";
+import { NOINDEX_HEADER, SHARE_PAGE_SOURCES, securityHeaders } from "./app/security-headers";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         headers: securityHeaders,
       },
+      ...SHARE_PAGE_SOURCES.map((source) => ({ source, headers: [NOINDEX_HEADER] })),
       {
         source: '/.well-known/apple-app-site-association',
         headers: [

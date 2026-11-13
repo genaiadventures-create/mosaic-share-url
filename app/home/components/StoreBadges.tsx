@@ -20,14 +20,15 @@ function PlayGlyph() {
 export default function StoreBadges({ className = "" }: { className?: string }) {
   return (
     <div className={`badges ${className}`}>
-      <a className="badge" href={IOS_URL} target="_blank" rel="noopener noreferrer" aria-label="Download Mosaic on the App Store">
+      {/* No aria-label: the visible badge text is the accessible name (WCAG 2.5.3 Label in Name). */}
+      <a className="badge" href={IOS_URL} target="_blank" rel="noopener noreferrer">
         <AppleGlyph />
         <span className="badge__text">
           <span className="badge__small">Download on the</span>
           <span className="badge__big">App Store</span>
         </span>
       </a>
-      <a className="badge" href={ANDROID_URL} target="_blank" rel="noopener noreferrer" aria-label="Get Mosaic on Google Play">
+      <a className="badge" href={ANDROID_URL} target="_blank" rel="noopener noreferrer">
         <PlayGlyph />
         <span className="badge__text">
           <span className="badge__small">Get it on</span>

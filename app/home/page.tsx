@@ -144,7 +144,8 @@ export default function HomePage() {
               flowers and finds a hidden cave. These are two of its pages.
             </p>
           </div>
-          <div className="spread" data-reveal>
+          {/* Scrolls sideways on phones: focusable and named so keyboard users can scroll it (WCAG 2.1.1). */}
+          <div className="spread" data-reveal tabIndex={0} role="region" aria-label="Two pages from the story, scroll sideways">
             {LILY.map((p) => (
               <figure key={p.src} className="spread__page">
                 <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes="(min-width: 1024px) 600px, 86vw" className="art" />
