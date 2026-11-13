@@ -21,8 +21,8 @@ export default function VideoRedirectPage({
     }, [appLink]);
 
     return (
-        <div style={{ textAlign: "center", marginTop: 80, fontFamily: "system-ui, sans-serif" }}>
-            <h2>Open in Mosaic App</h2>
+        <main style={{ textAlign: "center", marginTop: 80, fontFamily: "system-ui, sans-serif" }}>
+            <h1>Open in Mosaic App</h1>
             <p style={{ marginBottom: 20 }}>
                 If you have the Mosaic app installed, this video should open
                 automatically.
@@ -30,7 +30,7 @@ export default function VideoRedirectPage({
                 If not, you can{" "}
                 {appLink && (
                     <>
-                        <a href={appLink} style={{ color: "#7c3aed" }}>open it in the app</a> or{" "}
+                        <a href={appLink} className="share-link underline">open it in the app</a> or{" "}
                     </>
                 )}
                 download Mosaic from the app store.
@@ -39,7 +39,8 @@ export default function VideoRedirectPage({
                 <p style={{ margin: "20px 0" }}>
                     <a
                         href={appLink}
-                        style={{ fontSize: 18, color: "#7c3aed", fontWeight: "bold", textDecoration: "none" }}
+                        className="share-link"
+                        style={{ fontSize: 18, fontWeight: "bold", textDecoration: "none" }}
                     >
                         Open in App
                     </a>
@@ -50,7 +51,7 @@ export default function VideoRedirectPage({
                     href="https://apps.apple.com/us/app/mosaic-ai/id6751470484"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: "#333", textDecoration: "none" }}
+                    style={{ textDecoration: "none" }}
                 >
                     Download for iOS
                 </a>
@@ -59,11 +60,11 @@ export default function VideoRedirectPage({
                     href="https://play.google.com/store/apps/details?id=com.gitcuber369rn.Mosaic"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: "#333", textDecoration: "none" }}
+                    style={{ textDecoration: "none" }}
                 >
                     Download for Android
                 </a>
             </p>
-        </div>
+        </main>
     );
 }

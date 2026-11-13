@@ -93,7 +93,7 @@ function GetPageInner() {
           >
             {referralCode}
           </p>
-          <p style={{ color: "#6b7280", fontSize: 12, margin: 0 }}>
+          <p style={{ color: "#9ca3af", fontSize: 12, margin: 0 }}>
             Enter this during signup to get 5 free story tokens
           </p>
         </div>

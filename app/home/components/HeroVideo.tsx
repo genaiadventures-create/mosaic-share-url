@@ -97,7 +97,8 @@ export default function HeroVideo({ alt }: { alt: string }) {
   };
 
   // Labelled as video, not sound, so it is never confused with the narration's Listen button.
-  const label = playing ? "Pause the video" : "Play the video preview";
+  // The label starts with the visible text so voice-control users can say what they see (WCAG 2.5.3).
+  const label = playing ? "Pause video" : "Play preview video";
 
   return (
     <div ref={wrapRef} className="hero-media">

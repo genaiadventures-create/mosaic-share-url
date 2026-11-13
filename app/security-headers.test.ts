@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { CONTENT_SECURITY_POLICY, securityHeaders } from "./security-headers.ts";
+import { CONTENT_SECURITY_POLICY, NOINDEX_HEADER, SHARE_PAGE_SOURCES, securityHeaders } from "./security-headers.ts";
 
 const header = (key: string) => securityHeaders.find((h) => h.key === key)?.value;
 
@@ -24,5 +24,12 @@ describe("security headers", () => {
     assert.deepEqual(d["object-src"], ["'none'"]);
     assert.deepEqual(d["default-src"], ["'self'"]);
     assert.ok(d["script-src"].every((s: string) => s === "'self'" || s === "'unsafe-inline'"));
+  });
+
+  it("marks per-child story and video share pages noindex", () => {
+    assert.deepEqual(SHARE_PAGE_SOURCES, ["/story/:path*", "/video/:path*"]);
+    assert.equal(NOINDEX_HEADER.key, "X-Robots-Tag");
+    assert.match(NOINDEX_HEADER.value, /\bnoindex\b/);
+    assert.match(NOINDEX_HEADER.value, /\bnofollow\b/);
   });
 });

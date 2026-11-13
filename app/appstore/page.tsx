@@ -2,7 +2,7 @@ import React from 'react'
 
 const AppStore = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <main className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-sm">
         <h1 className="text-3xl font-bold text-gray-900 mb-6">App Store Listing Content for Mosaic AI Story Maker</h1>
         <p className="text-sm text-gray-600 mb-8">Last Updated: September 2025</p>
@@ -80,7 +80,7 @@ const AppStore = () => {
               <li className="mb-1">Safe, age-appropriate content for children 4+</li>
               <li className="mb-1">No ads or inappropriate content</li>
               <li className="mb-1">Parental controls and privacy protection</li>
-              <li className="mb-1">COPPA compliant and child-safe</li>
+              <li className="mb-1">Designed for parents; children use Mosaic with a parent</li>
             </ul>
 
             <h5 className="font-semibold text-gray-800 mb-2">Educational Benefits</h5>
@@ -112,7 +112,7 @@ const AppStore = () => {
               <li className="mb-1">No personal data collection from children</li>
               <li className="mb-1">Secure, encrypted data storage</li>
               <li className="mb-1">Parental controls and monitoring</li>
-              <li className="mb-1">COPPA and GDPR compliant</li>
+              <li className="mb-1">Accounts are for adults 18+</li>
             </ul>
 
             <h5 className="font-semibold text-gray-800 mb-2">Why Parents Love Mosaic:</h5>
@@ -310,7 +310,7 @@ const AppStore = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Legal Requirements</h3>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1">COPPA compliance for children's privacy</li>
+            <li className="mb-1">Designed for parents: accounts are for adults 18+, and children use Mosaic with a parent</li>
             <li className="mb-1">GDPR compliance for international users</li>
             <li className="mb-1">Clear terms of service and privacy policy</li>
             <li className="mb-1">Proper content rights and licensing</li>
@@ -356,7 +356,7 @@ const AppStore = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 

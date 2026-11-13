@@ -2,7 +2,7 @@ import React from 'react'
 
 const AgeRating = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <main className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-sm">
         <h1 className="text-3xl font-bold text-gray-900 mb-6">Age Rating Content Descriptions for Mosaic AI Story Maker</h1>
         <p className="text-sm text-gray-600 mb-8">Last Updated: September 2025</p>
@@ -17,7 +17,7 @@ const AgeRating = () => {
           
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Cartoon or Fantasy Violence</h3>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
-            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-600 font-semibold">None</span></p>
+            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-700 font-semibold">None</span></p>
             <p className="mb-3 text-black"><strong>Description</strong>: The app contains no violent content. All stories are designed to be educational, entertaining, and age-appropriate for children. Stories focus on positive themes such as friendship, adventure, learning, and creativity.</p>
             <p className="mb-2 text-black font-semibold">Content Examples:</p>
             <ul className="list-disc pl-6 text-black">
@@ -30,7 +30,7 @@ const AgeRating = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Realistic Violence</h3>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
-            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-600 font-semibold">None</span></p>
+            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-700 font-semibold">None</span></p>
             <p className="mb-3 text-black"><strong>Description</strong>: The app contains no realistic violence. All content is fictional and designed for children's entertainment and education.</p>
             <p className="mb-2 text-black font-semibold">Content Examples:</p>
             <ul className="list-disc pl-6 text-black">
@@ -43,7 +43,7 @@ const AgeRating = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Prolonged Violence or Intense Violence</h3>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
-            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-600 font-semibold">None</span></p>
+            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-700 font-semibold">None</span></p>
             <p className="mb-3 text-black"><strong>Description</strong>: The app contains no prolonged or intense violence. All content is gentle and appropriate for young children.</p>
             <p className="mb-2 text-black font-semibold">Content Examples:</p>
             <ul className="list-disc pl-6 text-black">
@@ -56,7 +56,7 @@ const AgeRating = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">4. Sexual Content or Nudity</h3>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
-            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-600 font-semibold">None</span></p>
+            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-700 font-semibold">None</span></p>
             <p className="mb-3 text-black"><strong>Description</strong>: The app contains no sexual content or nudity. All content is appropriate for children and families.</p>
             <p className="mb-2 text-black font-semibold">Content Examples:</p>
             <ul className="list-disc pl-6 text-black">
@@ -69,7 +69,7 @@ const AgeRating = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">5. Profanity or Crude Humor</h3>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
-            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-600 font-semibold">None</span></p>
+            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-700 font-semibold">None</span></p>
             <p className="mb-3 text-black"><strong>Description</strong>: The app contains no profanity or crude humor. All language is appropriate for children and educational in nature.</p>
             <p className="mb-2 text-black font-semibold">Content Examples:</p>
             <ul className="list-disc pl-6 text-black">
@@ -82,7 +82,7 @@ const AgeRating = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">6. Alcohol, Tobacco, or Drug Use or References</h3>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
-            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-600 font-semibold">None</span></p>
+            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-700 font-semibold">None</span></p>
             <p className="mb-3 text-black"><strong>Description</strong>: The app contains no references to alcohol, tobacco, or drugs. All content promotes healthy, positive lifestyle choices.</p>
             <p className="mb-2 text-black font-semibold">Content Examples:</p>
             <ul className="list-disc pl-6 text-black">
@@ -95,7 +95,7 @@ const AgeRating = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">7. Mature or Suggestive Themes</h3>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
-            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-600 font-semibold">None</span></p>
+            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-700 font-semibold">None</span></p>
             <p className="mb-3 text-black"><strong>Description</strong>: The app contains no mature or suggestive themes. All content is designed for children and families.</p>
             <p className="mb-2 text-black font-semibold">Content Examples:</p>
             <ul className="list-disc pl-6 text-black">
@@ -108,7 +108,7 @@ const AgeRating = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">8. Simulated Gambling</h3>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
-            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-600 font-semibold">None</span></p>
+            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-700 font-semibold">None</span></p>
             <p className="mb-3 text-black"><strong>Description</strong>: The app contains no gambling content. All features are educational and entertainment-focused.</p>
             <p className="mb-2 text-black font-semibold">Content Examples:</p>
             <ul className="list-disc pl-6 text-black">
@@ -121,7 +121,7 @@ const AgeRating = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">9. Horror or Fear Themes</h3>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
-            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-600 font-semibold">None</span></p>
+            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-700 font-semibold">None</span></p>
             <p className="mb-3 text-black"><strong>Description</strong>: The app contains no horror or fear themes. All content is designed to be comforting and educational for children.</p>
             <p className="mb-2 text-black font-semibold">Content Examples:</p>
             <ul className="list-disc pl-6 text-black">
@@ -134,7 +134,7 @@ const AgeRating = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">10. Realistic Blood</h3>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
-            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-600 font-semibold">None</span></p>
+            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-700 font-semibold">None</span></p>
             <p className="mb-3 text-black"><strong>Description</strong>: The app contains no realistic blood or gore. All content is appropriate for children.</p>
             <p className="mb-2 text-black font-semibold">Content Examples:</p>
             <ul className="list-disc pl-6 text-black">
@@ -162,7 +162,7 @@ const AgeRating = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Family-Friendly Themes</h3>
           <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
-            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-600 font-semibold">Constant</span></p>
+            <p className="mb-2 text-black"><strong>Frequency</strong>: <span className="text-green-700 font-semibold">Constant</span></p>
             <p className="mb-3 text-black"><strong>Description</strong>: All content is designed to be appropriate for family viewing and sharing.</p>
             <p className="mb-2 text-black font-semibold">Content Examples:</p>
             <ul className="list-disc pl-6 text-black">
@@ -267,7 +267,7 @@ const AgeRating = () => {
           
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">International Standards</h3>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1">COPPA compliance (Children's Online Privacy Protection Act)</li>
+            <li className="mb-1">Designed for parents: accounts are for adults 18+, and children use Mosaic with a parent</li>
             <li className="mb-1">GDPR compliance for international users</li>
             <li className="mb-1">Local content regulations compliance</li>
             <li className="mb-1">Industry best practices adherence</li>
@@ -320,7 +320,7 @@ const AgeRating = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 

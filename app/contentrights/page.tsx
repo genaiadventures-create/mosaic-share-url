@@ -2,7 +2,7 @@ import React from 'react'
 
 const ContentRights = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <main className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-sm">
         <h1 className="text-3xl font-bold text-gray-900 mb-6">Content Rights Information for Mosaic AI Story Maker</h1>
         <p className="text-sm text-gray-600 mb-8">Last Updated: September 2025</p>
@@ -191,7 +191,7 @@ const ContentRights = () => {
           </ul>
           <p className="mb-2 text-black"><strong>Third-Party Services</strong>:</p>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1">Stripe: Payment processing services</li>
+            <li className="mb-1">RevenueCat, Apple App Store and Google Play: Subscriptions and payments</li>
             <li className="mb-1">OpenAI: AI story generation</li>
             <li className="mb-1">Google: Authentication and AI services</li>
             <li className="mb-1">Apple: Authentication services</li>
@@ -345,7 +345,7 @@ const ContentRights = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 

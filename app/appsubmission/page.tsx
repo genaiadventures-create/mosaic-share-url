@@ -2,7 +2,7 @@ import React from 'react'
 
 const AppSubmission = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <main className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-sm">
         <h1 className="text-3xl font-bold text-gray-900 mb-6">App Store Submission Checklist for Mosaic AI Story Maker</h1>
         <p className="text-sm text-gray-600 mb-8">Last Updated: September 2025</p>
@@ -15,7 +15,7 @@ const AppSubmission = () => {
             <li className="mb-1"><strong>File</strong>: PRIVACY_POLICY.md</li>
             <li className="mb-1"><strong>Status</strong>: Complete</li>
             <li className="mb-1"><strong>URL Required</strong>: [Your Privacy Policy URL]</li>
-            <li className="mb-1"><strong>Content</strong>: Comprehensive privacy policy covering data collection, usage, children's privacy (COPPA), and user rights</li>
+            <li className="mb-1"><strong>Content</strong>: Comprehensive privacy policy covering data collection, usage, children's privacy, and user rights</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">✅ Terms and Conditions</h3>
@@ -78,7 +78,7 @@ const AppSubmission = () => {
             <li className="mb-1"><strong>Data Collection</strong>: Yes</li>
             <li className="mb-1"><strong>Data Types</strong>: Name, Email, Usage Data, Audio Data</li>
             <li className="mb-1"><strong>Purpose</strong>: App Functionality, Analytics, Personalization</li>
-            <li className="mb-1"><strong>Third-Party Sharing</strong>: Yes (Stripe, OpenAI, Google)</li>
+            <li className="mb-1"><strong>Third-Party Sharing</strong>: Yes (service providers listed in the Privacy Policy)</li>
             <li className="mb-1"><strong>Privacy Policy URL</strong>: [Required - Add your URL]</li>
           </ul>
 
@@ -110,7 +110,7 @@ const AppSubmission = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Privacy and Security</h3>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1">✅ COPPA compliance for children's privacy</li>
+            <li className="mb-1">✅ Designed for parents: accounts are for adults 18+, and children use Mosaic with a parent</li>
             <li className="mb-1">✅ GDPR compliance for international users</li>
             <li className="mb-1">✅ Secure data handling and storage</li>
             <li className="mb-1">✅ Clear data collection and usage policies</li>
@@ -258,7 +258,7 @@ const AppSubmission = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 

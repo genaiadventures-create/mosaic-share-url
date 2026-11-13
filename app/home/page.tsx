@@ -144,7 +144,8 @@ export default function HomePage() {
               flowers and finds a hidden cave. These are two of its pages.
             </p>
           </div>
-          <div className="spread" data-reveal>
+          {/* Scrolls sideways on phones: focusable and named so keyboard users can scroll it (WCAG 2.1.1). */}
+          <div className="spread" data-reveal tabIndex={0} role="region" aria-label="Two pages from the story, scroll sideways">
             {LILY.map((p) => (
               <figure key={p.src} className="spread__page">
                 <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes="(min-width: 1024px) 600px, 86vw" className="art" />
@@ -280,9 +281,8 @@ export default function HomePage() {
             </p>
             <p className="body">
               <strong>Yes, it uses AI.</strong> Mosaic uses AI to write, illustrate and narrate each story. What you
-              type in (your child's name, age group and interests) is used to write it. By default, stories go into
-              Mosaic's shared library, where other families can read them. You can delete your account and its data at
-              any time. The details are in the <Link href="/privacy-policy" className="link">privacy policy</Link>.
+              type in (your child's name, age group and interests) is used to write it. Stories you create are private
+              to your account by default. You can delete a story, or your account and its data, at any time. The details are in the <Link href="/privacy-policy" className="link">privacy policy</Link>.
             </p>
           </div>
         </section>
