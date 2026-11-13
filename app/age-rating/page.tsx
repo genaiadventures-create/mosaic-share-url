@@ -267,7 +267,7 @@ const AgeRating = () => {
           
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">International Standards</h3>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1">COPPA compliance (Children's Online Privacy Protection Act)</li>
+            <li className="mb-1">Designed for parents: accounts are for adults 18+, and children use Mosaic with a parent</li>
             <li className="mb-1">GDPR compliance for international users</li>
             <li className="mb-1">Local content regulations compliance</li>
             <li className="mb-1">Industry best practices adherence</li>

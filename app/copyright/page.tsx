@@ -59,11 +59,11 @@ const CopyRight = () => {
             The following third-party services are used under their respective terms:
           </p>
 
-          <h4 className="text-lg font-medium text-gray-700 mt-4 mb-2">Stripe</h4>
+          <h4 className="text-lg font-medium text-gray-700 mt-4 mb-2">RevenueCat</h4>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1">Payment processing services</li>
-            <li className="mb-1">Copyright: Stripe, Inc.</li>
-            <li className="mb-1">Terms: <a href="https://stripe.com/legal" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">https://stripe.com/legal</a></li>
+            <li className="mb-1">Subscription management services</li>
+            <li className="mb-1">Copyright: RevenueCat, Inc.</li>
+            <li className="mb-1">Terms: <a href="https://www.revenuecat.com/terms" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">https://www.revenuecat.com/terms</a></li>
           </ul>
 
           <h4 className="text-lg font-medium text-gray-700 mt-4 mb-2">OpenAI</h4>
@@ -128,7 +128,7 @@ const CopyRight = () => {
           <ul className="list-disc pl-6 mb-4 text-black">
             <li className="mb-1">Apple, Apple Logo, iPhone, iPad (Apple Inc.)</li>
             <li className="mb-1">Google, Google Play (Google LLC)</li>
-            <li className="mb-1">Stripe (Stripe, Inc.)</li>
+            <li className="mb-1">RevenueCat (RevenueCat, Inc.)</li>
             <li className="mb-1">OpenAI (OpenAI, L.L.C.)</li>
           </ul>
 

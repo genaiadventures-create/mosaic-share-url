@@ -191,7 +191,7 @@ const ContentRights = () => {
           </ul>
           <p className="mb-2 text-black"><strong>Third-Party Services</strong>:</p>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1">Stripe: Payment processing services</li>
+            <li className="mb-1">RevenueCat, Apple App Store and Google Play: Subscriptions and payments</li>
             <li className="mb-1">OpenAI: AI story generation</li>
             <li className="mb-1">Google: Authentication and AI services</li>
             <li className="mb-1">Apple: Authentication services</li>

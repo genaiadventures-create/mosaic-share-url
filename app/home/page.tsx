@@ -281,9 +281,8 @@ export default function HomePage() {
             </p>
             <p className="body">
               <strong>Yes, it uses AI.</strong> Mosaic uses AI to write, illustrate and narrate each story. What you
-              type in (your child's name, age group and interests) is used to write it. By default, stories go into
-              Mosaic's shared library, where other families can read them. You can delete your account and its data at
-              any time. The details are in the <Link href="/privacy-policy" className="link">privacy policy</Link>.
+              type in (your child's name, age group and interests) is used to write it. Stories you create are private
+              to your account by default. You can delete a story, or your account and its data, at any time. The details are in the <Link href="/privacy-policy" className="link">privacy policy</Link>.
             </p>
           </div>
         </section>

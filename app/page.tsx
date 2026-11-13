@@ -402,7 +402,7 @@ export default async function HomePage({
             </span>
             <span className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#B793FF] inline-block" />
-              COPPA compliant
+              Designed for parents
             </span>
           </div>
         </div>

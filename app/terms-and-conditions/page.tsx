@@ -92,7 +92,7 @@ const TermsAndConditions = () => {
           <ul className="list-disc pl-6 mb-4 text-black">
             <li className="mb-1">Some features require a paid subscription</li>
             <li className="mb-1">Subscription fees are charged in advance</li>
-            <li className="mb-1">All payments are processed securely through Stripe</li>
+            <li className="mb-1">Payments are processed by the Apple App Store or Google Play, and subscriptions are managed through RevenueCat</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Subscription Terms</h3>
@@ -121,8 +121,8 @@ const TermsAndConditions = () => {
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Children's Privacy</h3>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1">We comply with COPPA and other children's privacy laws</li>
-            <li className="mb-1">Parents/guardians must provide consent for child data collection</li>
+            <li className="mb-1">Mosaic is designed for parents. Accounts are for adults 18+; children use Mosaic with a parent</li>
+            <li className="mb-1">Information about a child is provided by the parent, not collected from the child</li>
             <li className="mb-1">We do not knowingly collect data from children under 13</li>
           </ul>
 
