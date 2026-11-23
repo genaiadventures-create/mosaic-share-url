@@ -2,7 +2,9 @@
 // Every claim here is checked against skills/DESIGN_BRIEF.md section 10.
 import { ANDROID_URL } from "../referral.ts";
 
-export const SITE_URL = "https://mosaicai.in";
+import { ORGANIZATION_ID, PAGE_DATES, SITE_URL, WEBSITE_ID, innerPageNodes } from "../marketing-seo.ts";
+
+export { SITE_URL };
 export const IOS_URL = "https://apps.apple.com/us/app/mosaic-create-bedtime-stories/id6751470484";
 export { ANDROID_URL };
 
@@ -93,14 +95,54 @@ export const FAQ: { q: string; a: string }[] = [
   },
 ];
 
+function bookNodes() {
+  return BOOKS.map((b) => ({
+    "@type": "Book",
+    "@id": `${SITE_URL}/#book-${b.slug}`,
+    name: `${b.title}: ${b.subtitle}`,
+    author: { "@type": "Organization", name: "GenAI Adventures" },
+    publisher: { "@id": ORGANIZATION_ID },
+    numberOfPages: 50,
+    bookFormat: "https://schema.org/Paperback",
+    image: `${SITE_URL}${b.cover}`,
+    ...(b.isbn ? { isbn: b.isbn } : {}),
+    url: amazonUrl(b.asin),
+    offers: {
+      "@type": "Offer",
+      price: b.price,
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: amazonUrl(b.asin),
+      seller: { "@type": "Organization", name: "Amazon" },
+    },
+  }));
+}
+
+export const BOOKS_PATH = "/books";
+
+export function booksJsonLd() {
+  const books = bookNodes();
+  const { webPage, breadcrumb } = innerPageNodes(BOOKS_PATH, "Books", {
+    datePublished: "2026-10-24",
+    dateModified: PAGE_DATES[BOOKS_PATH],
+  });
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      { ...webPage, mainEntity: books.map((book) => ({ "@id": book["@id"] })) },
+      breadcrumb,
+      ...books,
+    ],
+  };
+}
+
 export function jsonLd() {
-  const org = `${SITE_URL}/#org`;
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": org,
+        "@id": ORGANIZATION_ID,
         name: "Mosaic",
         url: SITE_URL,
         logo: `${SITE_URL}/app-icon.png`,
@@ -109,10 +151,10 @@ export function jsonLd() {
       },
       {
         "@type": "WebSite",
-        "@id": `${SITE_URL}/#site`,
+        "@id": WEBSITE_ID,
         url: SITE_URL,
         name: "Mosaic",
-        publisher: { "@id": org },
+        publisher: { "@id": ORGANIZATION_ID },
         inLanguage: "en",
       },
       {
@@ -125,7 +167,7 @@ export function jsonLd() {
         installUrl: IOS_URL,
         downloadUrl: [IOS_URL, ANDROID_URL],
         image: `${SITE_URL}/app-icon.png`,
-        publisher: { "@id": org },
+        publisher: { "@id": ORGANIZATION_ID },
         offers: [
           {
             "@type": "Offer",
@@ -150,25 +192,7 @@ export function jsonLd() {
           },
         ],
       },
-      ...BOOKS.map((b) => ({
-        "@type": "Book",
-        "@id": `${SITE_URL}/#book-${b.slug}`,
-        name: `${b.title}: ${b.subtitle}`,
-        author: { "@type": "Organization", name: "GenAI Adventures" },
-        publisher: { "@id": org },
-        bookFormat: "https://schema.org/Paperback",
-        image: `${SITE_URL}${b.cover}`,
-        ...(b.isbn ? { isbn: b.isbn } : {}),
-        url: amazonUrl(b.asin),
-        offers: {
-          "@type": "Offer",
-          price: b.price,
-          priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
-          url: amazonUrl(b.asin),
-          seller: { "@type": "Organization", name: "Amazon" },
-        },
-      })),
+      ...bookNodes(),
       {
         "@type": "FAQPage",
         mainEntity: FAQ.map(({ q, a }) => ({

@@ -1,27 +1,18 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { BOOKS, BOOKS_LINE, SITE_URL, amazonUrl, jsonLd } from "../content";
+import { marketingMetadata } from "../../marketing-seo";
+import { BOOKS, BOOKS_LINE, BOOKS_PATH, amazonUrl, booksJsonLd } from "../content";
 import { kalam, satoshi } from "../fonts";
 import "../home.css";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "Mosaic Books | Color-and-Write Paperbacks for Kids",
-  description: "Meet Space Pals and Arjuna's Archery School: color-and-write paperbacks for ages 5 to 8, available on Amazon.",
-  alternates: { canonical: `${SITE_URL}/books` },
-  openGraph: {
-    title: "Mosaic Books | Color-and-Write Paperbacks for Kids",
-    description: "Two color-and-write paperbacks for ages 5 to 8, available on Amazon.",
-    url: `${SITE_URL}/books`,
-    siteName: "Mosaic",
-    type: "website",
-  },
-};
+export const metadata = marketingMetadata(
+  BOOKS_PATH,
+  "Mosaic Books | Color-and-Write Paperbacks for Kids",
+  "Meet Space Pals and Arjuna's Archery School: color-and-write paperbacks for ages 5 to 8, available on Amazon.",
+);
 
 export default function BooksPage() {
-  // Reuse the homepage graph, including its Book nodes and Amazon offers.
-  const ld = JSON.stringify(jsonLd()).replace(/</g, "\\u003c");
+  const ld = JSON.stringify(booksJsonLd()).replace(/</g, "\\u003c");
   return (
     <div className={`mh ${satoshi.variable} ${kalam.variable}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: ld }} />

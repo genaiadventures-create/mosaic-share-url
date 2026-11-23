@@ -7,7 +7,8 @@ import HeroVideo from "./components/HeroVideo";
 import ReadAlong, { type Word } from "./components/ReadAlong";
 import RevealObserver from "./components/RevealObserver";
 import StoreBadges from "./components/StoreBadges";
-import { BOOKS, BOOKS_LINE, FAQ, H1, PRICE_LINE, SITE_URL, amazonUrl, jsonLd } from "./content";
+import { marketingMetadata } from "../marketing-seo";
+import { BOOKS, BOOKS_LINE, FAQ, H1, PRICE_LINE, amazonUrl, jsonLd } from "./content";
 import { kalam, satoshi } from "./fonts";
 import "./home.css";
 
@@ -16,21 +17,8 @@ const DESCRIPTION =
   "A bedtime story app that writes, illustrates and reads aloud a new story with your child as the hero. First 5 stories free, then $4.99 a month.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: TITLE,
-  description: DESCRIPTION,
-  alternates: { canonical: `${SITE_URL}/` },
+  ...marketingMetadata("/", TITLE, DESCRIPTION),
   robots: { index: true, follow: true },
-  openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-    url: `${SITE_URL}/`,
-    siteName: "Mosaic",
-    type: "website",
-    locale: "en_US",
-  },
-  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
-  itunes: { appId: "6751470484" },
 };
 
 // The first sentence of Kayden's chapter 1, exactly as narrated (ends at "star.").
@@ -225,7 +213,7 @@ export default function HomePage() {
             {WALL.map((t) => (
               <figure key={t.src} className={t.big ? "tile tile--big" : "tile"} data-reveal>
                 <div className="tile__art">
-                  <Image src={t.src} alt={t.alt} fill sizes={t.big ? "(min-width: 1024px) 680px, 100vw" : "(min-width: 1024px) 480px, 50vw"} className="art art--fill" />
+                  <Image src={t.src} alt={t.alt} width={t.w} height={t.h} sizes={t.big ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 768px) 50vw, 100vw"} className="art art--fill" />
                 </div>
                 <figcaption className="tile__cap">
                   <span className="tile__who">{t.who}</span>
@@ -315,7 +303,7 @@ export default function HomePage() {
         </div>
 
         <section id="get" className="cta" aria-labelledby="cta-title">
-          <Image src="/stories/bear_candles.jpg" alt="" fill sizes="100vw" className="cta__bg" />
+          <Image src="/stories/bear_candles.jpg" alt="" width={1024} height={576} sizes="100vw" className="cta__bg" />
           <div className="cta__inner" data-reveal>
             <h2 id="cta-title" className="h2">Make tonight's story.</h2>
             <StoreBadges className="cta__badges" />

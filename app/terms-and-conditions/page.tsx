@@ -1,4 +1,11 @@
 import React from 'react'
+import { marketingMetadata } from '../marketing-seo'
+
+export const metadata = marketingMetadata(
+  '/terms-and-conditions',
+  'Mosaic Terms and Conditions',
+  'Read the terms for using Mosaic AI Story Maker, including account eligibility, subscriptions, and sharing stories.',
+)
 
 const TermsAndConditions = () => {
   return (

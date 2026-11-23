@@ -1,20 +1,27 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "./marketing-seo.ts";
 
 // Paths no crawler should index. /story/ and /video/ are per-child share pages.
 const DISALLOW = ["/get", "/appsubmission", "/story/", "/video/"];
 
+// A named group overrides `*`, so every group repeats the private-path blocks.
+const CRAWLERS = [
+  "*",
+  "OAI-SearchBot",
+  "GPTBot",
+  "ClaudeBot",
+  "Claude-SearchBot",
+  "Claude-User",
+  "PerplexityBot",
+  "Perplexity-User",
+  "ChatGPT-User",
+  "Google-Extended",
+  "Applebot-Extended",
+];
+
 export default function robots(): MetadataRoute.Robots {
-  // ## AI crawlers
-  // OAI-SearchBot (ChatGPT search) and GPTBot are explicitly allowed so the
-  // marketing and GEO pages are discoverable in AI search. A crawler that
-  // matches a named group ignores "*", so each named group repeats DISALLOW.
   return {
-    rules: [
-      { userAgent: "*", allow: "/", disallow: DISALLOW },
-      { userAgent: "OAI-SearchBot", allow: "/", disallow: DISALLOW },
-      { userAgent: "GPTBot", allow: "/", disallow: DISALLOW },
-    ],
-    sitemap: "https://mosaicai.in/sitemap.xml",
-    host: "https://mosaicai.in",
+    rules: CRAWLERS.map((userAgent) => ({ userAgent, allow: "/", disallow: DISALLOW })),
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

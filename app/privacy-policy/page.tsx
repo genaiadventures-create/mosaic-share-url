@@ -1,4 +1,11 @@
 import React from 'react'
+import { marketingMetadata } from '../marketing-seo'
+
+export const metadata = marketingMetadata(
+  '/privacy-policy',
+  'Mosaic Privacy Policy',
+  'Learn what information Mosaic collects, how it is used to personalize stories, and how to manage or delete your data.',
+)
 
 const PrivacyPolicy = () => {
   return (

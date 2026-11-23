@@ -19,12 +19,23 @@ describe("robots", () => {
     assert.ok(disallow.includes("/video/"));
   });
 
-  it("explicitly allows OAI-SearchBot and GPTBot in separate groups with the same blocks", () => {
-    for (const bot of ["OAI-SearchBot", "GPTBot"]) {
+  it("gives every named crawler the same path rules as * and leaves Bingbot on *", () => {
+    const bots = [
+      "OAI-SearchBot", "GPTBot", "ClaudeBot", "Claude-SearchBot", "Claude-User",
+      "PerplexityBot", "Perplexity-User", "ChatGPT-User", "Google-Extended", "Applebot-Extended",
+    ];
+    assert.deepEqual(rules.map((r) => r.userAgent).sort(), ["*", ...bots].sort());
+    for (const bot of bots) {
       const group = rules.find((r) => r.userAgent === bot);
       assert.ok(group, bot);
       assert.equal(group.allow, "/");
       assert.deepEqual([group.disallow ?? []].flat(), disallow);
     }
+  });
+
+  it("advertises the apex sitemap without a non-standard Host directive", () => {
+    const policy = robots();
+    assert.equal(policy.sitemap, "https://mosaicai.in/sitemap.xml");
+    assert.ok(!("host" in policy));
   });
 });

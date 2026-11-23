@@ -1,26 +1,19 @@
-import type { Metadata } from "next";
+import { PAGE_DATES, innerPageNodes, marketingMetadata } from "../../marketing-seo";
 import Link from "next/link";
-import { SITE_URL, IOS_URL, ANDROID_URL, PRICE_LINE } from "../content";
+import { IOS_URL, ANDROID_URL, PRICE_LINE } from "../content";
 import GeoPageLayout from "../../components/GeoPageLayout";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "What Is the Best Personalized Bedtime Story App for Kids? | Mosaic",
-  description:
-    "Mosaic creates personalized bedtime stories starring your child. Free to try, then $4.99/month for 30 stories/month. iOS & Android.",
-  alternates: { canonical: `${SITE_URL}/best-personalized-bedtime-story-app` },
-  openGraph: {
-    title: "What Is the Best Personalized Bedtime Story App for Kids? | Mosaic",
-    description:
-      "Mosaic creates personalized bedtime stories starring your child. Free to try, then $4.99/month for 30 stories/month. iOS & Android.",
-    url: `${SITE_URL}/best-personalized-bedtime-story-app`,
-    siteName: "Mosaic",
-    type: "website",
-  },
-};
+const PATH = "/best-personalized-bedtime-story-app";
+const PAGE_NAME = "Personalized bedtime story app";
+const DATE_MODIFIED = PAGE_DATES[PATH];
 
-const jsonLd = {
-  "@context": "https://schema.org",
+export const metadata = marketingMetadata(
+  PATH,
+  "Best Personalized Bedtime Story App for Kids | Mosaic",
+  "Mosaic creates personalized bedtime stories starring your child. Free to try, then $4.99/month for 30 stories/month. iOS & Android.",
+);
+
+const faq = {
   "@type": "FAQPage",
   mainEntity: [
     {
@@ -66,14 +59,19 @@ const jsonLd = {
   ],
 };
 
+const { webPage, breadcrumb } = innerPageNodes(PATH, PAGE_NAME, {
+  datePublished: "2026-10-24",
+  dateModified: DATE_MODIFIED,
+});
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [webPage, breadcrumb, faq],
+};
+
 export default function BestPersonalizedBedtimeStoryAppPage() {
   return (
-    <GeoPageLayout
-      jsonLd={jsonLd}
-      title="What Is the Best Personalized Bedtime Story App for Kids?"
-      description="Mosaic creates personalized bedtime stories starring your child. Free to try, then $4.99/month for 30 stories/month. iOS & Android."
-      canonicalPath="/best-personalized-bedtime-story-app"
-    >
+    <GeoPageLayout jsonLd={jsonLd} dateModified={DATE_MODIFIED}>
       <section className="section wrap" aria-labelledby="hero-h1">
         <h1 id="hero-h1" className="h1">
           What is the best personalized bedtime story app for kids?

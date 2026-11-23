@@ -1,29 +1,22 @@
-import type { Metadata } from "next";
+import { PAGE_DATES, innerPageNodes, marketingMetadata } from "../../marketing-seo";
 import Link from "next/link";
-import { SITE_URL, amazonUrl } from "../content";
+import { amazonUrl } from "../content";
 import GeoPageLayout from "../../components/GeoPageLayout";
 
 const ARJUNA_ASIN = "B0HNZGGLMF";
 const ARJUNA_AMAZON_URL = amazonUrl(ARJUNA_ASIN);
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "What Is the Best Mahabharata Story Book for Kids? | Mosaic",
-  description:
-    "Arjuna's Archery School is a gentle Mahabharata story for ages 5–8 — no battles, 50-page color-and-write paperback, $9.99 on Amazon.",
-  alternates: { canonical: `${SITE_URL}/mahabharata-story-for-kids-book` },
-  openGraph: {
-    title: "What Is the Best Mahabharata Story Book for Kids? | Mosaic",
-    description:
-      "Arjuna's Archery School is a gentle Mahabharata story for ages 5–8 — no battles, 50-page color-and-write paperback, $9.99 on Amazon.",
-    url: `${SITE_URL}/mahabharata-story-for-kids-book`,
-    siteName: "Mosaic",
-    type: "website",
-  },
-};
+const PATH = "/mahabharata-story-for-kids-book";
+const PAGE_NAME = "Mahabharata story book for kids";
+const DATE_MODIFIED = PAGE_DATES[PATH];
 
-const jsonLd = {
-  "@context": "https://schema.org",
+export const metadata = marketingMetadata(
+  PATH,
+  "Best Mahabharata Story Book for Kids | Mosaic",
+  "Arjuna's Archery School is a gentle Mahabharata story for ages 5–8 — no battles, 50-page color-and-write paperback, $9.99 on Amazon.",
+);
+
+const faq = {
   "@type": "FAQPage",
   mainEntity: [
     {
@@ -69,14 +62,19 @@ const jsonLd = {
   ],
 };
 
+const { webPage, breadcrumb } = innerPageNodes(PATH, PAGE_NAME, {
+  datePublished: "2026-10-24",
+  dateModified: DATE_MODIFIED,
+});
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [webPage, breadcrumb, faq],
+};
+
 export default function MahabharataStoryForKidsBookPage() {
   return (
-    <GeoPageLayout
-      jsonLd={jsonLd}
-      title="What Is the Best Mahabharata Story Book for Kids?"
-      description="Arjuna's Archery School is a gentle Mahabharata story for ages 5–8 — no battles, 50-page color-and-write paperback, $9.99 on Amazon."
-      canonicalPath="/mahabharata-story-for-kids-book"
-    >
+    <GeoPageLayout jsonLd={jsonLd} dateModified={DATE_MODIFIED}>
       <section className="section wrap" aria-labelledby="hero-h1">
         <h1 id="hero-h1" className="h1">
           What is the best Mahabharata story book for kids?

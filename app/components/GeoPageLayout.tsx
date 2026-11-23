@@ -1,28 +1,23 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { SITE_URL, IOS_URL, ANDROID_URL } from "../home/content";
 import { kalam, satoshi } from "../home/fonts";
 import "../home/home.css";
 
 interface GeoPageLayoutProps {
   children: React.ReactNode;
   jsonLd: object;
-  title: string;
-  description: string;
-  canonicalPath: string;
+  dateModified: string;
 }
 
 export default function GeoPageLayout({
   children,
   jsonLd,
-  title,
-  description,
-  canonicalPath,
+  dateModified,
 }: GeoPageLayoutProps) {
   const ld = JSON.stringify(jsonLd).replace(/</g, "\\u003c");
-  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
+  const updated = new Intl.DateTimeFormat("en-US", {
+    month: "long", year: "numeric", timeZone: "UTC",
+  }).format(new Date(dateModified));
 
   return (
     <div className={`mh ${satoshi.variable} ${kalam.variable}`}>
@@ -50,7 +45,10 @@ export default function GeoPageLayout({
           </Link>
         </nav>
       </header>
-      <main id="main">{children}</main>
+      <main id="main">
+        {children}
+        <p className="small wrap">Last updated <time dateTime={dateModified}>{updated}</time></p>
+      </main>
       <footer className="footer wrap">
         <p className="footer__copy">© {new Date().getFullYear()} Mosaic</p>
         <nav aria-label="Footer" className="footer__links">

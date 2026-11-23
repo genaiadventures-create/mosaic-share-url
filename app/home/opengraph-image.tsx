@@ -2,10 +2,11 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-export const alt =
-  "Mosaic: bedtime stories where your child is the hero. Illustration of a boy astronaut grinning on a snowy planet.";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+import { SOCIAL_IMAGE } from "../marketing-seo";
+
+export const alt = SOCIAL_IMAGE.alt;
+export const size = { width: SOCIAL_IMAGE.width, height: SOCIAL_IMAGE.height };
+export const contentType = SOCIAL_IMAGE.type;
 
 // Plain Satoshi 700 on the night colour, next to a real story illustration. No gradients.
 export default async function OpengraphImage() {

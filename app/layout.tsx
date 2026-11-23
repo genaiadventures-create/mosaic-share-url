@@ -21,9 +21,8 @@ export const metadata: Metadata = {
     "Create a personalized bedtime story for your child in seconds: their name, their interests, illustrated chapters read aloud. Free to try on iOS and Android.",
   itunes: { appId: "6751470484" },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
   },
 };
 

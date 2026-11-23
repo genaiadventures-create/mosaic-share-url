@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
+import { PAGE_DATES, innerPageNodes, marketingMetadata } from "../../marketing-seo";
 import Link from "next/link";
-import { SITE_URL, amazonUrl } from "../content";
+import { amazonUrl } from "../content";
 import GeoPageLayout from "../../components/GeoPageLayout";
 
 const SPACE_PALS_ASIN = "B0HNZG1QYB";
@@ -8,24 +8,17 @@ const ARJUNA_ASIN = "B0HNZGGLMF";
 const SPACE_PALS_AMAZON_URL = amazonUrl(SPACE_PALS_ASIN);
 const ARJUNA_AMAZON_URL = amazonUrl(ARJUNA_ASIN);
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "What Are the Best Color-and-Write Books for Ages 5–8? | Mosaic",
-  description:
-    "Space Pals and Arjuna's Archery School: two 50-page color-and-write paperbacks for ages 5–8, 22 scenes each, $9.99 on Amazon.",
-  alternates: { canonical: `${SITE_URL}/color-and-write-books-ages-5-8` },
-  openGraph: {
-    title: "What Are the Best Color-and-Write Books for Ages 5–8? | Mosaic",
-    description:
-      "Space Pals and Arjuna's Archery School: two 50-page color-and-write paperbacks for ages 5–8, 22 scenes each, $9.99 on Amazon.",
-    url: `${SITE_URL}/color-and-write-books-ages-5-8`,
-    siteName: "Mosaic",
-    type: "website",
-  },
-};
+const PATH = "/color-and-write-books-ages-5-8";
+const PAGE_NAME = "Color-and-write books for ages 5–8";
+const DATE_MODIFIED = PAGE_DATES[PATH];
 
-const jsonLd = {
-  "@context": "https://schema.org",
+export const metadata = marketingMetadata(
+  PATH,
+  "Best Color-and-Write Books for Ages 5–8 | Mosaic",
+  "Space Pals and Arjuna's Archery School: two 50-page color-and-write paperbacks for ages 5–8, 22 scenes each, $9.99 on Amazon.",
+);
+
+const faq = {
   "@type": "FAQPage",
   mainEntity: [
     {
@@ -71,14 +64,19 @@ const jsonLd = {
   ],
 };
 
+const { webPage, breadcrumb } = innerPageNodes(PATH, PAGE_NAME, {
+  datePublished: "2026-10-24",
+  dateModified: DATE_MODIFIED,
+});
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [webPage, breadcrumb, faq],
+};
+
 export default function ColorAndWriteBooksAges58Page() {
   return (
-    <GeoPageLayout
-      jsonLd={jsonLd}
-      title="What Are the Best Color-and-Write Books for Ages 5–8?"
-      description="Space Pals and Arjuna's Archery School: two 50-page color-and-write paperbacks for ages 5–8, 22 scenes each, $9.99 on Amazon."
-      canonicalPath="/color-and-write-books-ages-5-8"
-    >
+    <GeoPageLayout jsonLd={jsonLd} dateModified={DATE_MODIFIED}>
       <section className="section wrap" aria-labelledby="hero-h1">
         <h1 id="hero-h1" className="h1">
           What are the best color-and-write books for ages 5–8?
