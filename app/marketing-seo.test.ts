@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { it } from "node:test";
 import { BOOKS_FAQ, BOOKS_PATH, booksJsonLd, jsonLd } from "./home/content.ts";
 import { INDEXNOW_KEY } from "./indexnow-key.ts";
-import { ORGANIZATION_ID, SITE_URL, WEBSITE_ID, faqPageNode, marketingMetadata } from "./marketing-seo.ts";
+import { ORGANIZATION_ID, SAME_AS, SITE_URL, WEBSITE_ID, faqPageNode, marketingMetadata, pageJsonLdString } from "./marketing-seo.ts";
 import sitemap from "./sitemap.ts";
 
 it("uses the public apex URL for canonical and social metadata", () => {
@@ -27,9 +27,19 @@ it("uses the public apex URL for canonical and social metadata", () => {
   assert.equal(image.height, 630);
 });
 
-it("publishes only the books, page, breadcrumb and visible FAQ on the books page", () => {
+it("resolves Organization and WebSite @ids on standalone pages and lists official profiles", () => {
+  const graph = JSON.parse(pageJsonLdString("/privacy-policy", "Privacy Policy"))["@graph"];
+  const org = graph.find((node: { "@type": string }) => node["@type"] === "Organization");
+  assert.equal(org["@id"], ORGANIZATION_ID);
+  assert.deepEqual(org.sameAs, SAME_AS);
+  assert.ok(SAME_AS.every((url) => url.startsWith("https://")));
+  assert.ok(graph.some((node: { "@id": string }) => node["@id"] === WEBSITE_ID));
+  assert.ok(graph.some((node: { "@type": string }) => node["@type"] === "BreadcrumbList"));
+});
+
+it("publishes the entity nodes, books, page, breadcrumb and visible FAQ on the books page", () => {
   const graph = booksJsonLd()["@graph"];
-  assert.deepEqual(graph.map((node) => node["@type"]), ["WebPage", "BreadcrumbList", "Book", "Book", "FAQPage"]);
+  assert.deepEqual(graph.map((node) => node["@type"]), ["Organization", "WebSite", "WebPage", "BreadcrumbList", "Book", "Book", "FAQPage"]);
   const page = graph.find((node) => "isPartOf" in node);
   const breadcrumb = graph.find((node) => "itemListElement" in node);
   const books = graph.filter((node) => node["@type"] === "Book");

@@ -2,7 +2,7 @@
 // Every claim here is checked against skills/DESIGN_BRIEF.md section 10.
 import { ANDROID_URL } from "../referral.ts";
 
-import { ORGANIZATION_ID, PAGE_DATES, SITE_URL, WEBSITE_ID, faqPageNode, innerPageNodes, type QA } from "../marketing-seo.ts";
+import { ORGANIZATION_ID, PAGE_DATES, SITE_URL, entityNodes, faqPageNode, innerPageNodes, type QA } from "../marketing-seo.ts";
 
 export { SITE_URL };
 export const IOS_URL = "https://apps.apple.com/us/app/mosaic-create-bedtime-stories/id6751470484";
@@ -184,6 +184,7 @@ export function booksJsonLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
+      ...entityNodes(),
       { ...webPage, mainEntity: books.map((book) => ({ "@id": book["@id"] })) },
       breadcrumb,
       ...books,
@@ -196,23 +197,7 @@ export function jsonLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "Organization",
-        "@id": ORGANIZATION_ID,
-        name: "Mosaic",
-        url: SITE_URL,
-        logo: `${SITE_URL}/app-icon.png`,
-        email: "support@mosaicai.in",
-        sameAs: [IOS_URL, ANDROID_URL],
-      },
-      {
-        "@type": "WebSite",
-        "@id": WEBSITE_ID,
-        url: SITE_URL,
-        name: "Mosaic",
-        publisher: { "@id": ORGANIZATION_ID },
-        inLanguage: "en",
-      },
+      ...entityNodes(),
       {
         "@type": "SoftwareApplication",
         "@id": `${SITE_URL}/#app`,

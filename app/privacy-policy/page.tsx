@@ -1,16 +1,22 @@
 import React from 'react'
-import { marketingMetadata } from '../marketing-seo'
+import { marketingMetadata, pageJsonLdString } from '../marketing-seo'
 
 export const metadata = marketingMetadata(
   '/privacy-policy',
-  'Mosaic Privacy Policy',
+  'Privacy Policy | Mosaic: AI Bedtime Stories for Kids',
   'Learn what information Mosaic collects, how it is used to personalize stories, and how to manage or delete your data.',
 )
 
 const PrivacyPolicy = () => {
   return (
     <main className="min-h-screen bg-gray-50 py-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: pageJsonLdString('/privacy-policy', 'Privacy Policy') }} />
       <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-sm">
+        <nav aria-label="Site" className="text-sm text-gray-700 mb-6 flex gap-4">
+          <a href="https://mosaicai.in/" className="underline">Mosaic home</a>
+          <a href="https://mosaicai.in/books" className="underline">Mosaic books</a>
+          <a href="https://mosaicai.in/best-personalized-bedtime-story-app" className="underline">How Mosaic works</a>
+        </nav>
         <h1 className="text-3xl font-bold text-gray-900 mb-6">Privacy Policy for Mosaic AI Story Maker</h1>
         <p className="text-sm text-gray-600 mb-8">Last updated: November 13, 2026</p>
         

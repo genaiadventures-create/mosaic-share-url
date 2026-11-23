@@ -1,4 +1,4 @@
-import { PAGE_DATES, faqPageNode, innerPageNodes, marketingMetadata } from "../../marketing-seo";
+import { PAGE_DATES, entityNodes, faqPageNode, innerPageNodes, marketingMetadata } from "../../marketing-seo";
 import Link from "next/link";
 import { BOOKS, amazonUrl } from "../content";
 import { COLOR_WRITE_FAQ as FAQ, COLOR_WRITE_FAQ_ITEMS, COLOR_WRITE_SOURCES } from "../geo-content";
@@ -26,7 +26,7 @@ const { webPage, breadcrumb } = innerPageNodes(PATH, PAGE_NAME, {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [webPage, breadcrumb, faqPageNode(PATH, COLOR_WRITE_FAQ_ITEMS)],
+  "@graph": [...entityNodes(), webPage, breadcrumb, faqPageNode(PATH, COLOR_WRITE_FAQ_ITEMS)],
 };
 
 export default function ColorAndWriteBooksAges58Page() {

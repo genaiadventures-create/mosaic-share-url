@@ -1,4 +1,4 @@
-import { PAGE_DATES, faqPageNode, innerPageNodes, marketingMetadata } from "../../marketing-seo";
+import { PAGE_DATES, entityNodes, faqPageNode, innerPageNodes, marketingMetadata } from "../../marketing-seo";
 import Link from "next/link";
 import { IOS_URL, ANDROID_URL, PRICE_LINE } from "../content";
 import { BEDTIME_FAQ as FAQ, BEDTIME_FAQ_ITEMS, BEDTIME_SOURCES } from "../geo-content";
@@ -22,7 +22,7 @@ const { webPage, breadcrumb } = innerPageNodes(PATH, PAGE_NAME, {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [webPage, breadcrumb, faqPageNode(PATH, BEDTIME_FAQ_ITEMS)],
+  "@graph": [...entityNodes(), webPage, breadcrumb, faqPageNode(PATH, BEDTIME_FAQ_ITEMS)],
 };
 
 export default function BestPersonalizedBedtimeStoryAppPage() {

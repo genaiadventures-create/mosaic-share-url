@@ -1,4 +1,4 @@
-import { PAGE_DATES, faqPageNode, innerPageNodes, marketingMetadata } from "../../marketing-seo";
+import { PAGE_DATES, entityNodes, faqPageNode, innerPageNodes, marketingMetadata } from "../../marketing-seo";
 import Link from "next/link";
 import { amazonUrl } from "../content";
 import { MAHABHARATA_FAQ as FAQ, MAHABHARATA_FAQ_ITEMS, MAHABHARATA_SOURCES } from "../geo-content";
@@ -25,7 +25,7 @@ const { webPage, breadcrumb } = innerPageNodes(PATH, PAGE_NAME, {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [webPage, breadcrumb, faqPageNode(PATH, MAHABHARATA_FAQ_ITEMS)],
+  "@graph": [...entityNodes(), webPage, breadcrumb, faqPageNode(PATH, MAHABHARATA_FAQ_ITEMS)],
 };
 
 export default function MahabharataStoryForKidsBookPage() {
