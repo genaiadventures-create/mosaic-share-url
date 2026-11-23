@@ -115,7 +115,7 @@ export function amazonUrl(asin: string) {
 export const FAQ: { q: string; a: string }[] = [
   {
     q: "What is Mosaic?",
-    a: "Mosaic is an iPhone and Android app that writes a new bedtime story with your child as the hero. It illustrates every scene and reads the story aloud.",
+    a: "Mosaic is an iPhone and Android app that writes a new bedtime story with your child as the hero. It adds a storybook illustration and reads the story aloud.",
   },
   {
     q: "Can I make a bedtime story with my child's name in it?",
@@ -131,7 +131,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Does Mosaic read the story out loud?",
-    a: "Yes. You choose a female or male voice, and the words light up as they are read, so early readers can follow along.",
+    a: "Yes. You choose a female or male narrator, so you can read along together or just listen with the lights down.",
   },
   {
     q: "Is Mosaic safe for kids? Does it use AI?",

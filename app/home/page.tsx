@@ -107,7 +107,7 @@ export default function HomePage() {
             </p>
             <p className="body hero__how">
               Give it your child's name, their age and what they're into this week. You get a chapter book about
-              them, a picture for every scene, and a voice to read it.
+              them, a storybook illustration, and a voice to read it.
             </p>
             <StoreBadges className="hero__badges" />
             <p className="small">Free to try. iPhone and Android.</p>
@@ -186,11 +186,11 @@ export default function HomePage() {
                   <span className="step__n" aria-hidden="true">3</span>
                   <div>
                     <h3 className="h3">Read it together, or press play and turn the lights down.</h3>
-                    <p className="body">The words light up as they're read, so early readers can follow along.</p>
+                    <p className="body">Pick a female or male narrator, then read along together or just listen.</p>
                   </div>
                   <Image
                     src="/app/reader.jpg"
-                    alt="Mosaic reader screen: chapter 1 of The Sparkling Trail, with an illustration of two boys running at night and the narrated words highlighted."
+                    alt="Mosaic reader screen: chapter 1 of The Sparkling Trail, with an illustration of two boys running at night above the chapter text."
                     width={1020}
                     height={2208}
                     sizes="(min-width: 1024px) 220px, 50vw"

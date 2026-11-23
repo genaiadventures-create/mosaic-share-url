@@ -26,7 +26,7 @@ export const BEDTIME_FAQ = {
   length: {
     id: "length-h2",
     q: "How long should a bedtime story be for a 4-year-old?",
-    a: "There is no official length. For the 4 to 6 age group Mosaic writes two chapters of about 300 to 400 words each, which is roughly 600 to 800 words, or about five minutes read aloud at an unhurried pace. Pick a length your child can finish while still calm, and keep the routine the same each night.",
+    a: "There is no official length. For the 4 to 6 age group Mosaic writes two chapters and asks for more than 300 words in each, so a story usually runs past 600 words: about five minutes read aloud at an unhurried pace, by our estimate. Pick a length your child can finish while still calm, and keep the routine the same each night.",
   },
   safe: {
     id: "safe-h2",
