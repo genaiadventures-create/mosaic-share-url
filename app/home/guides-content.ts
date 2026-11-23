@@ -65,11 +65,11 @@ export const ROUNDUP_APPS: RoundupApp[] = [
     personalization: "None listed; daily picks by age and interests",
     narration: "Yes, audio only; it can keep playing with the screen off",
     ages: "0 to 10",
-    price: "Some free content; subscription from $9.99 a month on the US App Store (varies by location); 7-day free trial",
+    price: "Some free content; subscription with a 7-day free trial. US App Store in-app prices are listed from $9.99 (varies by plan and location)",
     platforms: "iPhone, iPad, Android",
     bestFor:
       "A sleep routine built on the same calm recorded stories every night. If your child wants familiar favorites on repeat and you want no screen, Moshi fits better than Mosaic.",
-    fit: "Nothing in it is about your child, and the catalog is a fixed size, listed at 400+ pieces. The monthly price is higher than Mosaic's or Oscar's monthly plans.",
+    fit: "Stories are not personalized to your child; the catalog is a curated library, listed at 400+ pieces.",
   },
   {
     id: "calm",
@@ -97,7 +97,7 @@ export const ROUNDUP_APPS: RoundupApp[] = [
     platforms: "iPhone, iPad, Android",
     bestFor:
       "A child who is learning to read, or who wants real published books. Epic is the best fit here for a big, varied library and reading together.",
-    fit: "It is a reading library first, so the bedtime part is your choice of book. Its $13.99 monthly price is above the monthly prices listed for Mosaic, Oscar Stories and Moshi.",
+    fit: "It is a reading library first, so the bedtime part is your choice of book. Its monthly plan is listed at $13.99, with a cheaper annual plan.",
   },
   {
     id: "wonderbly",
