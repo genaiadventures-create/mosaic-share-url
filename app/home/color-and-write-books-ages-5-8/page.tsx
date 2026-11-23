@@ -1,12 +1,13 @@
-import { PAGE_DATES, innerPageNodes, marketingMetadata } from "../../marketing-seo";
+import { PAGE_DATES, faqPageNode, innerPageNodes, marketingMetadata } from "../../marketing-seo";
 import Link from "next/link";
-import { amazonUrl } from "../content";
+import { BOOKS, amazonUrl } from "../content";
+import { COLOR_WRITE_FAQ as FAQ, COLOR_WRITE_FAQ_ITEMS, COLOR_WRITE_SOURCES } from "../geo-content";
 import GeoPageLayout from "../../components/GeoPageLayout";
+import { QA, Sources } from "../../components/Geo";
 
-const SPACE_PALS_ASIN = "B0HNZG1QYB";
-const ARJUNA_ASIN = "B0HNZGGLMF";
-const SPACE_PALS_AMAZON_URL = amazonUrl(SPACE_PALS_ASIN);
-const ARJUNA_AMAZON_URL = amazonUrl(ARJUNA_ASIN);
+const [SPACE_PALS, ARJUNA] = BOOKS;
+const SPACE_PALS_AMAZON_URL = amazonUrl(SPACE_PALS.asin);
+const ARJUNA_AMAZON_URL = amazonUrl(ARJUNA.asin);
 
 const PATH = "/color-and-write-books-ages-5-8";
 const PAGE_NAME = "Color-and-write books for ages 5–8";
@@ -15,54 +16,8 @@ const DATE_MODIFIED = PAGE_DATES[PATH];
 export const metadata = marketingMetadata(
   PATH,
   "Best Color-and-Write Books for Ages 5–8 | Mosaic",
-  "Space Pals and Arjuna's Archery School: two 50-page color-and-write paperbacks for ages 5–8, 22 scenes each, $9.99 on Amazon.",
+  "Space Pals and Arjuna's Archery School: two 50-page color-and-write paperbacks for ages 5 to 8, 22 scenes each, $9.99 on Amazon.",
 );
-
-const faq = {
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What are the best color-and-write books for ages 5–8?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Mosaic publishes two: Space Pals: My Galactic Adventure and Arjuna's Archery School — both 50-page color-and-write paperbacks with 22 illustrated scenes, ages 5–8, $9.99 each on Amazon.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is a color-and-write book?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Each spread has a full-page illustration to color plus a lined writing prompt so kids can add their own dialogue, descriptions, or story twists — combining creativity and literacy practice.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How many pages and scenes are in each book?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Each book is 50 pages with 22 distinct scenes (one scene per spread), giving plenty of coloring and writing space.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What are the two titles available?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Space Pals: My Galactic Adventure (ASIN B0HNZG1QYB, ISBN 9798164090173) and Arjuna's Archery School: A Mahabharata Story for Kids (ASIN B0HNZGGLMF, ISBN 9798164096427). Both are $9.99 on Amazon.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Where can I buy these color-and-write books?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Both are sold on Amazon. Search for the ASINs above or visit the Mosaic Books page for direct links.",
-      },
-    },
-  ],
-};
 
 const { webPage, breadcrumb } = innerPageNodes(PATH, PAGE_NAME, {
   datePublished: "2026-10-24",
@@ -71,80 +26,156 @@ const { webPage, breadcrumb } = innerPageNodes(PATH, PAGE_NAME, {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [webPage, breadcrumb, faq],
+  "@graph": [webPage, breadcrumb, faqPageNode(PATH, COLOR_WRITE_FAQ_ITEMS)],
 };
 
 export default function ColorAndWriteBooksAges58Page() {
   return (
     <GeoPageLayout jsonLd={jsonLd} dateModified={DATE_MODIFIED}>
-      <section className="section wrap" aria-labelledby="hero-h1">
-        <h1 id="hero-h1" className="h1">
-          What are the best color-and-write books for ages 5–8?
-        </h1>
-        <p className="lead">
-          Mosaic publishes two: <strong>Space Pals: My Galactic Adventure</strong> and
-          <strong>Arjuna's Archery School</strong> — both 50-page color-and-write
-          paperbacks with 22 illustrated scenes, ages 5–8,{" "}
-          <a href={SPACE_PALS_AMAZON_URL} target="_blank" rel="noopener noreferrer">
-            $9.99 each on Amazon
-          </a>
-          .
-        </p>
+      <section className="section wrap geo" aria-labelledby="hero-h1">
+        <div className="geo__col">
+          <h1 id="hero-h1" className="h1">
+            {FAQ.best.q}
+          </h1>
+          <p className="lead">{FAQ.best.a}</p>
+          <p>
+            Buy <a href={SPACE_PALS_AMAZON_URL} target="_blank" rel="noopener noreferrer">Space Pals</a> or{" "}
+            <a href={ARJUNA_AMAZON_URL} target="_blank" rel="noopener noreferrer">Arjuna&apos;s Archery School</a> on
+            Amazon, or see <Link href="/books">both on one page</Link>.
+          </p>
+        </div>
       </section>
 
-      <section className="section wrap" aria-labelledby="what-h2">
-        <h2 id="what-h2" className="h2">What is a color-and-write book?</h2>
+      <QA {...FAQ.what}>
         <p>
-          Each spread has a full-page illustration to color plus a lined writing
-          prompt so kids can add their own dialogue, descriptions, or story
-          twists — combining creativity and literacy practice.
+          Every scene has two blanks and a Your turn box that asks the child to draw, circle or answer. Across each book
+          there are 8 questions, 7 drawing prompts and 7 circle-one choices. The story is written to &ldquo;you&rdquo;, so the
+          reader is the hero. The hero is never named or drawn. The pictures are printed as line art on white paper.
         </p>
-      </section>
-
-      <section className="section wrap" aria-labelledby="pages-h2">
-        <h2 id="pages-h2" className="h2">How many pages and scenes are in each book?</h2>
         <p>
-          Each book is 50 pages with 22 distinct scenes (one scene per spread),
-          giving plenty of coloring and writing space.
+          The pictures were made with AI image tools, which each copyright page says. The story text was drafted with an
+          AI writing assistant and reviewed by the publisher, GenAI Adventures.
         </p>
-      </section>
+      </QA>
 
-      <section className="section wrap" aria-labelledby="titles-h2">
-        <h2 id="titles-h2" className="h2">What are the two titles available?</h2>
-        <ul className="books-list">
+      <QA {...FAQ.ages}>
+        <p>
+          The sentences are short and full of sound words such as Whoosh and Clip-clop. Each blank needs one word, a color
+          or a name. A 5-year-old can say the answer while you write it. A 7 or 8-year-old can usually do it alone. Past
+          about 8, the stories will likely feel young. That is our reading of the books, not a test result.
+        </p>
+      </QA>
+
+      <QA {...FAQ.pages} />
+
+      <QA {...FAQ.titles}>
+        <div className="geo__table" role="region" aria-label="Space Pals compared with Arjuna's Archery School" tabIndex={0}>
+          <table>
+            <caption>The two Mosaic color-and-write paperbacks</caption>
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Space Pals: My Galactic Adventure</th>
+                <th scope="col">Arjuna&apos;s Archery School</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Setting</th>
+                <td>A rocket, the moon and a string of small planets</td>
+                <td>A forest school with round huts, a mango tree and a lotus pond</td>
+              </tr>
+              <tr>
+                <th scope="row">Story</th>
+                <td>Help rescue a little robot, then spend a night on the moon</td>
+                <td>Lessons with Teacher Drona, a wooden bird, a fair and graduation day</td>
+              </tr>
+              <tr>
+                <th scope="row">Companions</th>
+                <td>A cat astronaut, an alien pup, a bunny, a fox, a sloth, a dragon and more</td>
+                <td>Arjuna, big cheerful Bhima, Teacher Drona and a peacock</td>
+              </tr>
+              <tr>
+                <th scope="row">Themes</th>
+                <td>Helping a friend, wonder at space</td>
+                <td>Focus, practice, sharing</td>
+              </tr>
+              <tr>
+                <th scope="row">Ending</th>
+                <td>Campfire, hammock, Earth in the window</td>
+                <td>Garland, goodbyes, a new friend club</td>
+              </tr>
+              <tr>
+                <th scope="row">Format</th>
+                <td colSpan={2}>Paperback, 50 pages, 8.5 by 11 inches, black-and-white interior, 22 scenes each, $9.99</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Details for Space Pals are on{" "}
+          <a href={SPACE_PALS_AMAZON_URL} target="_blank" rel="noopener noreferrer">its Amazon listing</a>. For the
+          Arjuna book, including how it relates to the epic, see the{" "}
+          <Link href="/mahabharata-story-for-kids-book">Mahabharata story book page</Link>.
+        </p>
+      </QA>
+
+      <QA {...FAQ.which} />
+
+      <QA {...FAQ.use}>
+        <p>
+          One scene a night takes about three weeks, which suits a bedtime habit. Let your child pick the answers, even
+          silly ones, then match the picture to them. Ask one follow-up about the Your turn box and stop there. Finished
+          pages make a keepsake.
+        </p>
+      </QA>
+
+      <QA {...FAQ.research}>
+        <ul>
           <li>
-            <strong>Space Pals: My Galactic Adventure</strong> — Blast off in your
-            own rocket, float with a cat astronaut, and help the Space Pals
-            rescue a little robot before a campfire night on the moon.{" "}
-            <a href={SPACE_PALS_AMAZON_URL} target="_blank" rel="noopener noreferrer">
-              (ASIN B0HNZG1QYB, ISBN 9798164090173)
-            </a>
+            The AAP{" "}
+            <a href="https://doi.org/10.1542/peds.2024-069090" target="_blank" rel="noopener noreferrer">recommends</a>{" "}
+            shared reading from birth through at least kindergarten.
           </li>
           <li>
-            <strong>Arjuna's Archery School: A Mahabharata Story for Kids</strong> — A
-            gentle, battle-free introduction where young Arjuna practices archery
-            alongside a peacock and a wooden bird, learning focus and kindness.{" "}
-            <a href={ARJUNA_AMAZON_URL} target="_blank" rel="noopener noreferrer">
-              (ASIN B0HNZGGLMF, ISBN 9798164096427)
+            A{" "}
+            <a href="https://pubmed.ncbi.nlm.nih.gov/29595311/" target="_blank" rel="noopener noreferrer">
+              meta-analysis of 38 studies with 2,455 children
+            </a>{" "}
+            found that reading style, including dialogic reading where adult and child talk about the story, affected
+            how many new words children learned. The age of the child and who read the story did not.
+          </li>
+          <li>
+            In 213 children assessed at ages 3 and 4,{" "}
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3399936/" target="_blank" rel="noopener noreferrer">
+              fine motor skills, especially copying designs
             </a>
+            , predicted higher achievement at kindergarten entry and more improvement over the year. It is an association
+            in a middle-income sample.
           </li>
         </ul>
-        <p>Both are $9.99 list price on Amazon.</p>
-      </section>
+      </QA>
 
-      <section className="section wrap" aria-labelledby="buy-h2">
-        <h2 id="buy-h2" className="h2">Where can I buy these color-and-write books?</h2>
+      <QA {...FAQ.buy}>
+        <ul>
+          <li>
+            <a href={SPACE_PALS_AMAZON_URL} target="_blank" rel="noopener noreferrer">Space Pals: My Galactic Adventure</a>,
+            ASIN {SPACE_PALS.asin}, ISBN {SPACE_PALS.isbn}
+          </li>
+          <li>
+            <a href={ARJUNA_AMAZON_URL} target="_blank" rel="noopener noreferrer">Arjuna&apos;s Archery School</a>, ASIN{" "}
+            {ARJUNA.asin}, ISBN {ARJUNA.isbn}
+          </li>
+        </ul>
         <p>
-          Both are sold on Amazon. Search for the ASINs above or visit the
-          <Link href="/books" className="btn-primary" style={{ display: "inline-block", marginTop: "0.5rem" }}>
-            Mosaic Books page
-          </Link>
-          for direct links.
+          <Link href="/books" className="btn-primary">Mosaic Books page</Link>
         </p>
-      </section>
+      </QA>
+
+      <Sources items={COLOR_WRITE_SOURCES} />
 
       <section className="section wrap cta" aria-labelledby="cta-h2">
-        <h2 id="cta-h2" className="visually-hidden">Get started</h2>
+        <h2 id="cta-h2" className="visually-hidden">Get the Mosaic app</h2>
         <Link href="/#get" className="btn-primary">Try the Mosaic app free</Link>
         <p className="cta__note">Or explore our <Link href="/books">color-and-write paperbacks</Link>.</p>
       </section>

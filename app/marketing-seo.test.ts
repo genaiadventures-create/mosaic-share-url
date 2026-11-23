@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { it } from "node:test";
-import { BOOKS_PATH, booksJsonLd, jsonLd } from "./home/content.ts";
+import { BOOKS_FAQ, BOOKS_PATH, booksJsonLd, jsonLd } from "./home/content.ts";
 import { INDEXNOW_KEY } from "./indexnow-key.ts";
-import { ORGANIZATION_ID, SITE_URL, WEBSITE_ID, marketingMetadata } from "./marketing-seo.ts";
+import { ORGANIZATION_ID, SITE_URL, WEBSITE_ID, faqPageNode, marketingMetadata } from "./marketing-seo.ts";
 import sitemap from "./sitemap.ts";
 
 it("uses the public apex URL for canonical and social metadata", () => {
@@ -27,12 +27,17 @@ it("uses the public apex URL for canonical and social metadata", () => {
   assert.equal(image.height, 630);
 });
 
-it("publishes only the books, page and breadcrumb on the books page", () => {
+it("publishes only the books, page, breadcrumb and visible FAQ on the books page", () => {
   const graph = booksJsonLd()["@graph"];
-  assert.deepEqual(graph.map((node) => node["@type"]), ["WebPage", "BreadcrumbList", "Book", "Book"]);
-  const page = graph.find((node) => "mainEntity" in node);
+  assert.deepEqual(graph.map((node) => node["@type"]), ["WebPage", "BreadcrumbList", "Book", "Book", "FAQPage"]);
+  const page = graph.find((node) => "isPartOf" in node);
   const breadcrumb = graph.find((node) => "itemListElement" in node);
   const books = graph.filter((node) => node["@type"] === "Book");
+  const faq = graph.find((node) => node["@type"] === "FAQPage") as ReturnType<typeof faqPageNode> | undefined;
+  assert.deepEqual(
+    faq?.mainEntity.map((item) => [item.name, item.acceptedAnswer.text]),
+    BOOKS_FAQ.map(({ q, a }) => [q, a]),
+  );
   const homepage = jsonLd()["@graph"];
   assert.ok(homepage.some((node) => node["@type"] === "FAQPage"));
   assert.ok(homepage.some((node) => node["@type"] === "Organization" && node["@id"] === ORGANIZATION_ID));

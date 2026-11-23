@@ -288,3 +288,29 @@ body:has(.mh) { background: #0f0a1e; }
   [data-reveal="pending"] { opacity: 1; transform: none; }
   .readalong__word[data-on] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
 }
+
+/* GEO pages: long-form, answer-first reading column */
+.geo .h1 { font-size: clamp(34px, 4.6vw, 56px); max-width: 20ch; }
+.geo .h2 { font-size: clamp(26px, 2.8vw, 34px); max-width: 26ch; margin-bottom: 16px; }
+.geo__col { max-width: 720px; }
+.geo p, .geo ul, .geo ol, .geo dl { max-width: 62ch; margin: 0 0 16px; }
+.geo ul, .geo ol { padding-left: 24px; }
+.geo li { margin-bottom: 8px; }
+.geo a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--purple); text-underline-offset: 3px; }
+.geo a:hover { text-decoration-color: var(--purple-hover); }
+.geo a.btn-primary { color: var(--night); text-decoration: none; }
+.geo__answer { font-size: 19px; line-height: 1.55; }
+.geo__note { margin-bottom: 16px; }
+.geo__sources { font-size: 15px; line-height: 1.5; }
+.geo__table { overflow-x: auto; margin: 0 0 24px; }
+.geo table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 16px; line-height: 1.45; }
+.geo caption { text-align: left; padding-bottom: 8px; color: var(--ink-2); font-size: 14px; }
+.geo th, .geo td { text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid var(--hair); }
+.geo thead th { border-top: 0; color: var(--ink-2); font-weight: 600; }
+.geo tbody th { font-weight: 600; }
+.geo dl.geo__facts { display: grid; grid-template-columns: max-content 1fr; gap: 4px 24px; font-size: 16px; }
+.geo__facts dt { color: var(--ink-2); }
+.geo__facts dd { margin: 0; }
+.geo ul { list-style: disc; }
+.geo ol { list-style: decimal; }
+.geo li::marker { color: var(--ink-2); }

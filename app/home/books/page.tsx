@@ -1,15 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import { marketingMetadata } from "../../marketing-seo";
-import { BOOKS, BOOKS_LINE, BOOKS_PATH, amazonUrl, booksJsonLd } from "../content";
+import { BOOKS, BOOKS_FAQ, BOOKS_LINE, BOOKS_PATH, BOOK_SPECS, amazonUrl, booksJsonLd } from "../content";
 import { kalam, satoshi } from "../fonts";
 import "../home.css";
 
 export const metadata = marketingMetadata(
   BOOKS_PATH,
   "Mosaic Books | Color-and-Write Paperbacks for Kids",
-  "Meet Space Pals and Arjuna's Archery School: color-and-write paperbacks for ages 5 to 8, available on Amazon.",
+  "Space Pals and Arjuna's Archery School: 50-page color-and-write paperbacks for ages 5 to 8, 22 scenes each, $9.99 on Amazon.",
 );
+
+const STEPS = [
+  "Read the left page together. A grown-up can read it aloud.",
+  "Fill in the two blanks with a name, a color or a silly idea.",
+  "Do the Your turn box: draw, circle or answer a question.",
+  "Color the picture on the facing page to match the answers.",
+];
 
 export default function BooksPage() {
   const ld = JSON.stringify(booksJsonLd()).replace(/</g, "\\u003c");
@@ -27,11 +34,13 @@ export default function BooksPage() {
           <Link href="/#get" className="btn-primary">Get the app</Link>
         </nav>
       </header>
-      <main id="main">
+      <main id="main" className="geo">
         <section className="section wrap" aria-labelledby="books-title">
           <div className="books__head">
             <h1 id="books-title" className="h1">Books to make your own.</h1>
-            <p className="lead">Two color-and-write paperbacks for ages 5 to 8, on Amazon now.</p>
+            <p className="lead">
+              Two color-and-write paperbacks for ages 5 to 8, on Amazon now. Each is 50 pages and $9.99.
+            </p>
             <p className="body books__how">{BOOKS_LINE}</p>
           </div>
           <div className="books">
@@ -44,13 +53,65 @@ export default function BooksPage() {
                   <h2 className="book__title">{b.title}</h2>
                   <p className="book__sub">{b.subtitle}</p>
                   <p className="body book__blurb">{b.blurb}</p>
-                  <p className="small">Paperback, 50 pages, ages 5 to 8. ${b.price} on Amazon.</p>
+                  <dl className="geo__facts">
+                    <dt>Format</dt>
+                    <dd>Paperback, 50 pages, 8.5 by 11 in</dd>
+                    <dt>Ages</dt>
+                    <dd>5 to 8</dd>
+                    <dt>Price</dt>
+                    <dd>${b.price} on Amazon</dd>
+                    <dt>ASIN</dt>
+                    <dd>{b.asin}</dd>
+                    {b.isbn ? (
+                      <>
+                        <dt>ISBN</dt>
+                        <dd>{b.isbn}</dd>
+                      </>
+                    ) : null}
+                  </dl>
+                  <h3 className="h3">What happens inside</h3>
+                  <ul className="books__scenes">
+                    {b.scenes.map((s) => (
+                      <li key={s}>{s}</li>
+                    ))}
+                  </ul>
                   <a href={amazonUrl(b.asin)} className="btn-ghost book__buy" target="_blank" rel="noopener noreferrer">
                     Buy on Amazon
                   </a>
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="section wrap" aria-labelledby="how-title">
+          <div className="geo__col">
+            <h2 id="how-title" className="h2">How does a color-and-write book work?</h2>
+            <p>{BOOK_SPECS} Each scene works the same way.</p>
+            <ol>
+              {STEPS.map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ol>
+            <p>
+              More detail:{" "}
+              <Link href="/color-and-write-books-ages-5-8">color-and-write books for ages 5 to 8</Link> and{" "}
+              <Link href="/mahabharata-story-for-kids-book">the Mahabharata story book for kids</Link>.
+            </p>
+          </div>
+        </section>
+
+        <section className="section wrap" aria-labelledby="faq-title">
+          <div className="geo__col">
+            <h2 id="faq-title" className="h2">Questions parents ask about the books</h2>
+            <div className="faq">
+              {BOOKS_FAQ.map(({ q, a }) => (
+                <details key={q} className="faq__item" open>
+                  <summary className="faq__q">{q}</summary>
+                  <p className="body faq__a">{a}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
       </main>

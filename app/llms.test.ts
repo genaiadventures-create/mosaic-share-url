@@ -1,7 +1,8 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { llmsTxt, llmsFullTxt } from "./llms.ts";
-import { BOOKS, FAQ, IOS_URL, ANDROID_URL, PRICE_LINE } from "./home/content.ts";
+import { BOOKS, BOOKS_FAQ, FAQ, IOS_URL, ANDROID_URL, PRICE_LINE } from "./home/content.ts";
+import { BEDTIME_FAQ_ITEMS, COLOR_WRITE_FAQ_ITEMS, MAHABHARATA_FAQ_ITEMS } from "./home/geo-content.ts";
 
 describe("llms.txt", () => {
   const body = llmsTxt();
@@ -60,5 +61,20 @@ describe("llms-full.txt", () => {
       assert.ok(full.includes(`### ${q}`), q);
       assert.ok(full.includes(a), q);
     }
+  });
+
+  it("adds the visible Q&A and sources from each GEO page and the books page", () => {
+    for (const { q, a } of [...BEDTIME_FAQ_ITEMS, ...MAHABHARATA_FAQ_ITEMS, ...COLOR_WRITE_FAQ_ITEMS, ...BOOKS_FAQ]) {
+      assert.ok(full.includes(`### ${q}`), q);
+      assert.ok(full.includes(a), q);
+    }
+    assert.ok(full.includes("https://doi.org/10.1542/peds.2024-069090"));
+    assert.ok(full.includes("https://www.britannica.com/topic/Mahabharata"));
+  });
+
+  it("states the verified app facts: iOS 15.1, English only, story length", () => {
+    assert.ok(full.includes("iOS 15.1 or later"));
+    assert.ok(full.includes("English only"));
+    assert.ok(full.includes("0-3 age group gets one chapter"));
   });
 });

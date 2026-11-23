@@ -3,7 +3,9 @@
 import {
   ANDROID_URL,
   BOOKS,
+  BOOKS_FAQ,
   BOOKS_LINE,
+  BOOK_SPECS,
   FAQ,
   IOS_URL,
   PRICE_LINE,
@@ -11,26 +13,34 @@ import {
   amazonUrl,
   type Book,
 } from "./home/content.ts";
+import {
+  BEDTIME_FAQ_ITEMS,
+  BEDTIME_SOURCES,
+  COLOR_WRITE_FAQ_ITEMS,
+  MAHABHARATA_FAQ_ITEMS,
+  MAHABHARATA_SOURCES,
+  type Source,
+} from "./home/geo-content.ts";
 
 type Link = { name: string; path: string; note: string };
 
 const PAGES: Link[] = [
   { name: "Mosaic home", path: "/", note: "What the app does, pricing, books and FAQ" },
-  { name: "Mosaic Books", path: "/books", note: "The two color-and-write paperbacks with Amazon links" },
+  { name: "Mosaic Books", path: "/books", note: "The two color-and-write paperbacks: format, scene lists, ISBNs, prices, FAQ and Amazon links" },
   {
     name: "Best personalized bedtime story app",
     path: "/best-personalized-bedtime-story-app",
-    note: "How Mosaic personalizes stories, ages, pricing and platforms",
+    note: "How Mosaic makes a story, story length, safety, pricing, platforms, and a comparison of audio-library, read-along and generator apps with cited research",
   },
   {
     name: "Mahabharata story book for kids",
     path: "/mahabharata-story-for-kids-book",
-    note: "Arjuna's Archery School, a gentle Mahabharata story for ages 5-8",
+    note: "Arjuna's Archery School: age suitability, scene list, how it relates to the epic, and cited sources",
   },
   {
     name: "Color-and-write books for ages 5-8",
     path: "/color-and-write-books-ages-5-8",
-    note: "Format, page and scene counts for both paperbacks",
+    note: "What a color-and-write book is, ages, page and scene counts, how to use it, and cited research",
   },
 ];
 
@@ -48,15 +58,19 @@ export function llmsTxt(): string {
   return [
     "# Mosaic",
     "",
-    "> Mosaic is an iPhone and Android app that writes a new bedtime story with your child as the hero, illustrates every scene and reads the story aloud. Mosaic also publishes two color-and-write paperback story books for ages 5-8, sold on Amazon.",
+    "> Mosaic is an iPhone and Android app that writes a new bedtime story with your child as the hero, adds a storybook-style illustration and reads the story aloud. Mosaic also publishes two color-and-write paperback story books for ages 5-8, sold on Amazon.",
     "",
     "Key facts:",
     "",
     "- Best for ages 3 to 10; in the app a parent picks an age group from 0-3 up to 12+.",
     `- Pricing: ${PRICE_LINE} Cancel any time in the App Store or Google Play.`,
-    "- Stories are written, illustrated and narrated with AI. No ads. A grown-up sets up the app and can read every story first.",
+    "- Stories are written, illustrated and narrated with AI. No ads. A grown-up sets up the app and can read every story first. Accounts are for adults 18+; stories are private to the account by default.",
+    "- Story length: the 0-3 age group gets one chapter and the 4-6 group gets two. Each chapter is requested at about 300 to 400 words.",
+    "- Platforms: iPhone and iPad (iOS 15.1 or later) and Android. The App Store listing shows English only.",
+    "- Story types: personalized generator (Mosaic), pre-written audio library (for example Moshi), read-along book app (for example Epic).",
     "- Narration in a female or male voice, with words highlighted as they are read.",
     `- Books: ${BOOKS_LINE}`,
+    `- Book format: ${BOOK_SPECS} The pictures were made with AI image tools and the story text was drafted with an AI writing assistant, then reviewed by the publisher.`,
     "- Contact: support@mosaicai.in",
     "",
     "## Pages",
@@ -80,13 +94,36 @@ export function llmsTxt(): string {
   ].join("\n");
 }
 
+const qaBlock = (items: { q: string; a: string }[]) => items.flatMap(({ q, a }) => [`### ${q}`, "", a, ""]);
+const sourceBlock = (items: Source[]) => items.map((s) => `- [${s.label}](${s.href}): ${s.supports}`);
+
 export function llmsFullTxt(): string {
   return [
     llmsTxt().trimEnd(),
     "",
     "## FAQ",
     "",
-    ...FAQ.flatMap(({ q, a }) => [`### ${q}`, "", a, ""]),
+    ...qaBlock(FAQ),
+    `## Personalized bedtime story apps (${SITE_URL}/best-personalized-bedtime-story-app)`,
+    "",
+    ...qaBlock(BEDTIME_FAQ_ITEMS),
+    "Sources:",
+    "",
+    ...sourceBlock(BEDTIME_SOURCES),
+    "",
+    `## Mahabharata story book for kids (${SITE_URL}/mahabharata-story-for-kids-book)`,
+    "",
+    ...qaBlock(MAHABHARATA_FAQ_ITEMS),
+    "Sources:",
+    "",
+    ...sourceBlock(MAHABHARATA_SOURCES),
+    "",
+    `## Color-and-write books for ages 5-8 (${SITE_URL}/color-and-write-books-ages-5-8)`,
+    "",
+    ...qaBlock(COLOR_WRITE_FAQ_ITEMS),
+    `## Mosaic books FAQ (${SITE_URL}/books)`,
+    "",
+    ...qaBlock(BOOKS_FAQ),
   ].join("\n");
 }
 

@@ -70,3 +70,18 @@ export function innerPageNodes(
   };
   return { webPage, breadcrumb };
 }
+
+export type QA = { q: string; a: string };
+
+// FAQPage JSON-LD built from the same {q, a} list the page renders, so the markup never describes text a visitor cannot see.
+export function faqPageNode(path: string, items: QA[]) {
+  return {
+    "@type": "FAQPage",
+    "@id": `${SITE_URL}${path}#faq`,
+    mainEntity: items.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  };
+}
