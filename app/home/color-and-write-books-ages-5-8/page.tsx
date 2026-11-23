@@ -1,4 +1,5 @@
 import { PAGE_DATES, entityNodes, faqPageNode, innerPageNodes, marketingMetadata } from "../../marketing-seo";
+import { PAGE_META } from "../../page-meta";
 import Link from "next/link";
 import { BOOKS, amazonUrl } from "../content";
 import { COLOR_WRITE_FAQ as FAQ, COLOR_WRITE_FAQ_ITEMS, COLOR_WRITE_SOURCES } from "../geo-content";
@@ -13,11 +14,7 @@ const PATH = "/color-and-write-books-ages-5-8";
 const PAGE_NAME = "Color-and-write books for ages 5–8";
 const DATE_MODIFIED = PAGE_DATES[PATH];
 
-export const metadata = marketingMetadata(
-  PATH,
-  "Best Color-and-Write Books for Ages 5–8 | Mosaic",
-  "Space Pals and Arjuna's Archery School: two 50-page color-and-write paperbacks for ages 5 to 8, 22 scenes each, $9.99 on Amazon.",
-);
+export const metadata = marketingMetadata(PATH, PAGE_META[PATH].title, PAGE_META[PATH].description);
 
 const { webPage, breadcrumb } = innerPageNodes(PATH, PAGE_NAME, {
   datePublished: "2026-10-24",

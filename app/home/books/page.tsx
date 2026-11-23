@@ -1,15 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { marketingMetadata } from "../../marketing-seo";
+import { PAGE_META } from "../../page-meta";
 import { BOOKS, BOOKS_FAQ, BOOKS_LINE, BOOKS_PATH, BOOK_SPECS, amazonUrl, booksJsonLd } from "../content";
 import { kalam, satoshi } from "../fonts";
 import "../home.css";
 
-export const metadata = marketingMetadata(
-  BOOKS_PATH,
-  "Mosaic Books | Color-and-Write Paperbacks for Kids",
-  "Space Pals and Arjuna's Archery School: 50-page color-and-write paperbacks for ages 5 to 8, 22 scenes each, $9.99 on Amazon.",
-);
+export const metadata = marketingMetadata(BOOKS_PATH, PAGE_META["/books"].title, PAGE_META["/books"].description);
 
 const STEPS = [
   "Read the left page together. A grown-up can read it aloud.",

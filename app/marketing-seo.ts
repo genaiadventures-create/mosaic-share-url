@@ -4,6 +4,7 @@ import { ANDROID_URL } from "./referral.ts";
 export const SITE_URL = "https://mosaicai.in";
 export const ORGANIZATION_ID = `${SITE_URL}/#org`;
 export const WEBSITE_ID = `${SITE_URL}/#site`;
+export const FEED_PATH = "/feed.xml";
 
 // Official profiles that identify the brand entity for search and AI engines (all return 200, checked 2026-11-23).
 export const SAME_AS = [
@@ -42,6 +43,8 @@ export const PAGE_DATES = {
   "/": "2026-11-23",
   "/books": "2026-11-23",
   "/best-personalized-bedtime-story-app": "2026-11-23",
+  "/best-bedtime-story-apps": "2026-11-23",
+  "/ai-bedtime-story-generator": "2026-11-23",
   "/mahabharata-story-for-kids-book": "2026-11-23",
   "/color-and-write-books-ages-5-8": "2026-11-23",
   "/privacy-policy": "2026-11-13",
@@ -62,7 +65,8 @@ export function marketingMetadata(path: string, title: string, description: stri
     metadataBase: new URL(SITE_URL),
     title,
     description,
-    alternates: { canonical: url },
+    // The Atom feed is advertised on every marketing page so feed readers and crawlers can discover it.
+    alternates: { canonical: url, types: { "application/atom+xml": `${SITE_URL}${FEED_PATH}` } },
     openGraph: {
       title,
       description,

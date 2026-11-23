@@ -1,4 +1,5 @@
 import { PAGE_DATES, entityNodes, faqPageNode, innerPageNodes, marketingMetadata } from "../../marketing-seo";
+import { PAGE_META } from "../../page-meta";
 import Link from "next/link";
 import { amazonUrl } from "../content";
 import { MAHABHARATA_FAQ as FAQ, MAHABHARATA_FAQ_ITEMS, MAHABHARATA_SOURCES } from "../geo-content";
@@ -12,11 +13,7 @@ const PATH = "/mahabharata-story-for-kids-book";
 const PAGE_NAME = "Mahabharata story book for kids";
 const DATE_MODIFIED = PAGE_DATES[PATH];
 
-export const metadata = marketingMetadata(
-  PATH,
-  "Best Mahabharata Story Book for Kids | Mosaic",
-  "Arjuna's Archery School is a gentle Mahabharata story for ages 5 to 8: no battles, 22 scenes, a 50-page color-and-write paperback, $9.99 on Amazon.",
-);
+export const metadata = marketingMetadata(PATH, PAGE_META[PATH].title, PAGE_META[PATH].description);
 
 const { webPage, breadcrumb } = innerPageNodes(PATH, PAGE_NAME, {
   datePublished: "2026-10-24",

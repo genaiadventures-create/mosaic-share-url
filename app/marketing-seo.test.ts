@@ -12,6 +12,7 @@ it("uses the public apex URL for canonical and social metadata", () => {
   const metadata = marketingMetadata(path, "Mosaic Books", description);
   const url = SITE_URL + path;
   assert.equal(metadata.alternates?.canonical, url);
+  assert.deepEqual(metadata.alternates?.types, { "application/atom+xml": `${SITE_URL}/feed.xml` });
   assert.ok(metadata.openGraph && "url" in metadata.openGraph);
   assert.equal(metadata.openGraph.url, url);
   assert.equal(metadata.openGraph.description, description);
@@ -65,7 +66,7 @@ it("publishes the entity nodes, books, page, breadcrumb and visible FAQ on the b
 
 it("publishes a sitemap containing just canonical pages and page-specific dates", () => {
   const entries = sitemap();
-  const paths = ["/", "/books", "/best-personalized-bedtime-story-app", "/mahabharata-story-for-kids-book",
+  const paths = ["/", "/books", "/best-personalized-bedtime-story-app", "/best-bedtime-story-apps", "/ai-bedtime-story-generator", "/mahabharata-story-for-kids-book",
     "/color-and-write-books-ages-5-8", "/privacy-policy", "/terms-and-conditions"];
   assert.deepEqual(entries.map(({ url }) => url), paths.map((path) => SITE_URL + path));
   for (const { lastModified } of entries) {

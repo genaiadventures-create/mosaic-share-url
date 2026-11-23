@@ -21,6 +21,18 @@ import {
   MAHABHARATA_SOURCES,
   type Source,
 } from "./home/geo-content.ts";
+import {
+  GENERATOR_CHECKLIST,
+  GENERATOR_FAQ_ITEMS,
+  GENERATOR_SOURCES,
+  GENERATOR_STEPS,
+  ROUNDUP_APPS,
+  ROUNDUP_FAQ_ITEMS,
+  ROUNDUP_LEAD,
+  ROUNDUP_METHOD,
+  ROUNDUP_SOURCES,
+  type RoundupApp,
+} from "./home/guides-content.ts";
 
 type Link = { name: string; path: string; note: string };
 
@@ -31,6 +43,16 @@ const PAGES: Link[] = [
     name: "Best personalized bedtime story app",
     path: "/best-personalized-bedtime-story-app",
     note: "How Mosaic makes a story, story length, safety, pricing, platforms, and a comparison of audio-library, read-along and generator apps with cited research",
+  },
+  {
+    name: "Best bedtime story apps for kids",
+    path: "/best-bedtime-story-apps",
+    note: "Honest 2026 comparison of Mosaic, Oscar Stories, Moshi, Calm Kids, Epic and Wonderbly: personalization, narration, ages, price and platforms, with sources checked November 2026",
+  },
+  {
+    name: "AI bedtime story generator: is it safe for kids?",
+    path: "/ai-bedtime-story-generator",
+    note: "How AI story generators work, what to check before using one, how Mosaic handles privacy, ads and review, and the steps to make a story with your child's name",
   },
   {
     name: "Mahabharata story book for kids",
@@ -95,6 +117,8 @@ export function llmsTxt(): string {
 }
 
 const qaBlock = (items: { q: string; a: string }[]) => items.flatMap(({ q, a }) => [`### ${q}`, "", a, ""]);
+const appLine = (a: RoundupApp) =>
+  `- [${a.name}](${a.url}): ${a.what}. Personalization: ${a.personalization}. Narration: ${a.narration}. Ages: ${a.ages}. Price: ${a.price}. Platforms: ${a.platforms}.`;
 const sourceBlock = (items: Source[]) => items.map((s) => `- [${s.label}](${s.href}): ${s.supports}`);
 
 export function llmsFullTxt(): string {
@@ -110,6 +134,38 @@ export function llmsFullTxt(): string {
     "Sources:",
     "",
     ...sourceBlock(BEDTIME_SOURCES),
+    "",
+    `## Best bedtime story apps for kids (${SITE_URL}/best-bedtime-story-apps)`,
+    "",
+    ROUNDUP_LEAD,
+    "",
+    "Comparison, checked November 2026 against each company's own site or store listing (not a ranking):",
+    "",
+    ...ROUNDUP_APPS.map(appLine),
+    "",
+    "How the apps were judged:",
+    "",
+    ...ROUNDUP_METHOD.map((m) => `- ${m}`),
+    "",
+    ...qaBlock(ROUNDUP_FAQ_ITEMS),
+    "Sources:",
+    "",
+    ...sourceBlock(ROUNDUP_SOURCES),
+    "",
+    `## AI bedtime story generator (${SITE_URL}/ai-bedtime-story-generator)`,
+    "",
+    ...qaBlock(GENERATOR_FAQ_ITEMS),
+    "What to check before using a generator:",
+    "",
+    ...GENERATOR_CHECKLIST.map((c) => `- ${c.lead} ${c.detail}`),
+    "",
+    "Steps to make a story with your child's name in Mosaic:",
+    "",
+    ...GENERATOR_STEPS.map((c, i) => `${i + 1}. ${c.lead} ${c.detail}`),
+    "",
+    "Sources:",
+    "",
+    ...sourceBlock(GENERATOR_SOURCES),
     "",
     `## Mahabharata story book for kids (${SITE_URL}/mahabharata-story-for-kids-book)`,
     "",

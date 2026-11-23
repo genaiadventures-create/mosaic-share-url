@@ -314,3 +314,27 @@ body:has(.mh) { background: #0f0a1e; }
 .geo ul { list-style: disc; }
 .geo ol { list-style: decimal; }
 .geo li::marker { color: var(--ink-2); }
+
+/* Roundup comparison table: seven columns, so it scrolls sideways on phones. The app name stays pinned. */
+.geo__table--wide { position: relative; }
+.geo__table--wide table { min-width: 1040px; }
+.geo__table--wide th, .geo__table--wide td { min-width: 140px; padding-right: 20px; }
+.geo__table--wide thead th:first-child, .geo__table--wide tbody th { position: sticky; left: 0; background: var(--night); min-width: 112px; z-index: 1; }
+.geo__app { margin-top: 32px; }
+.geo__app p { margin-bottom: 8px; }
+
+/* Guides link row on the home page: small, one line of links, same weight as the footer */
+.guides { display: flex; flex-wrap: wrap; align-items: center; gap: 0 24px; font-size: 14px; line-height: 1.5; }
+.guides__label { color: var(--ink-2); }
+.guides a { min-height: 44px; display: inline-flex; align-items: center; color: var(--ink); text-decoration: underline; text-decoration-color: var(--purple); text-underline-offset: 3px; }
+.guides a:hover { text-decoration-color: var(--purple-hover); }
+
+/* Footer links on the GEO pages */
+.footer__links { display: flex; flex-wrap: wrap; gap: 0 24px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* Closing link on the GEO pages: plain block, no hero scrim (the home page's .cta has no .wrap and keeps its photo). */
+.cta.wrap { display: block; min-height: 0; margin-top: 0; padding-block: 48px 0; overflow: visible; }
+.cta.wrap::after { content: none; }
+.cta__note { margin-top: 16px; }
+.cta.wrap .cta__note { max-width: 62ch; }

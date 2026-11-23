@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { llmsTxt, llmsFullTxt } from "./llms.ts";
 import { BOOKS, BOOKS_FAQ, FAQ, IOS_URL, ANDROID_URL, PRICE_LINE } from "./home/content.ts";
 import { BEDTIME_FAQ_ITEMS, COLOR_WRITE_FAQ_ITEMS, MAHABHARATA_FAQ_ITEMS } from "./home/geo-content.ts";
+import { GENERATOR_FAQ_ITEMS, ROUNDUP_APPS, ROUNDUP_FAQ_ITEMS } from "./home/guides-content.ts";
 
 describe("llms.txt", () => {
   const body = llmsTxt();
@@ -37,7 +38,7 @@ describe("llms.txt", () => {
   });
 
   it("links only to canonical marketing pages, never share or child-story URLs", () => {
-    for (const path of ["/", "/books", "/best-personalized-bedtime-story-app", "/mahabharata-story-for-kids-book", "/color-and-write-books-ages-5-8"]) {
+    for (const path of ["/", "/books", "/best-personalized-bedtime-story-app", "/best-bedtime-story-apps", "/ai-bedtime-story-generator", "/mahabharata-story-for-kids-book", "/color-and-write-books-ages-5-8"]) {
       assert.ok(body.includes(`(https://mosaicai.in${path})`), path);
     }
     assert.ok(!body.includes("share.mosaicai.in"));
@@ -64,12 +65,20 @@ describe("llms-full.txt", () => {
   });
 
   it("adds the visible Q&A and sources from each GEO page and the books page", () => {
-    for (const { q, a } of [...BEDTIME_FAQ_ITEMS, ...MAHABHARATA_FAQ_ITEMS, ...COLOR_WRITE_FAQ_ITEMS, ...BOOKS_FAQ]) {
+    for (const { q, a } of [...BEDTIME_FAQ_ITEMS, ...ROUNDUP_FAQ_ITEMS, ...GENERATOR_FAQ_ITEMS, ...MAHABHARATA_FAQ_ITEMS, ...COLOR_WRITE_FAQ_ITEMS, ...BOOKS_FAQ]) {
       assert.ok(full.includes(`### ${q}`), q);
       assert.ok(full.includes(a), q);
     }
     assert.ok(full.includes("https://doi.org/10.1542/peds.2024-069090"));
     assert.ok(full.includes("https://www.britannica.com/topic/Mahabharata"));
+  });
+
+  it("lists every roundup app with its price and platforms, and keeps the feed out of llms.txt", () => {
+    for (const app of ROUNDUP_APPS) {
+      assert.ok(full.includes(`[${app.name}](${app.url})`), app.name);
+      assert.ok(full.includes(`Price: ${app.price}.`), app.name);
+    }
+    assert.ok(!llmsTxt().includes("feed.xml"));
   });
 
   it("states the verified app facts: iOS 15.1, English only, story length", () => {

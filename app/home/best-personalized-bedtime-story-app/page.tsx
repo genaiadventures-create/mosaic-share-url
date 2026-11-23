@@ -1,4 +1,5 @@
 import { PAGE_DATES, entityNodes, faqPageNode, innerPageNodes, marketingMetadata } from "../../marketing-seo";
+import { PAGE_META } from "../../page-meta";
 import Link from "next/link";
 import { IOS_URL, ANDROID_URL, PRICE_LINE } from "../content";
 import { BEDTIME_FAQ as FAQ, BEDTIME_FAQ_ITEMS, BEDTIME_SOURCES } from "../geo-content";
@@ -9,11 +10,7 @@ const PATH = "/best-personalized-bedtime-story-app";
 const PAGE_NAME = "Personalized bedtime story app";
 const DATE_MODIFIED = PAGE_DATES[PATH];
 
-export const metadata = marketingMetadata(
-  PATH,
-  "Best Personalized Bedtime Story App for Kids | Mosaic",
-  "Mosaic writes, illustrates and narrates a new bedtime story starring your child. Free to try, then $4.99/month for 30 stories. iOS and Android.",
-);
+export const metadata = marketingMetadata(PATH, PAGE_META[PATH].title, PAGE_META[PATH].description);
 
 const { webPage, breadcrumb } = innerPageNodes(PATH, PAGE_NAME, {
   datePublished: "2026-10-24",
@@ -215,7 +212,9 @@ export default function BestPersonalizedBedtimeStoryAppPage() {
           Get Mosaic free
         </Link>
         <p className="cta__note">
-          Or explore our <Link href="/books">color-and-write paperbacks</Link>.
+          Compare more options in the <Link href="/best-bedtime-story-apps">best bedtime story apps roundup</Link>, read
+          whether <Link href="/ai-bedtime-story-generator">AI story generators are safe</Link>, or explore our{" "}
+          <Link href="/books">color-and-write paperbacks</Link>.
         </p>
       </section>
     </GeoPageLayout>

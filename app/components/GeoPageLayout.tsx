@@ -52,6 +52,15 @@ export default function GeoPageLayout({
       <footer className="footer wrap">
         <p className="footer__copy">© {new Date().getFullYear()} Mosaic</p>
         <nav aria-label="Footer" className="footer__links">
+          <Link href="/best-bedtime-story-apps" className="footer__link">
+            Best bedtime story apps
+          </Link>
+          <Link href="/ai-bedtime-story-generator" className="footer__link">
+            AI story generator guide
+          </Link>
+          <Link href="/best-personalized-bedtime-story-app" className="footer__link">
+            Personalized story app
+          </Link>
           <Link href="/privacy-policy" className="footer__link">
             Privacy
           </Link>

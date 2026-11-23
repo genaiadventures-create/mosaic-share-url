@@ -8,16 +8,13 @@ import ReadAlong, { type Word } from "./components/ReadAlong";
 import RevealObserver from "./components/RevealObserver";
 import StoreBadges from "./components/StoreBadges";
 import { marketingMetadata } from "../marketing-seo";
+import { PAGE_META } from "../page-meta";
 import { BOOKS, BOOKS_LINE, FAQ, H1, PRICE_LINE, amazonUrl, jsonLd } from "./content";
 import { kalam, satoshi } from "./fonts";
 import "./home.css";
 
-const TITLE = "Mosaic: Personalized Bedtime Stories Starring Your Child";
-const DESCRIPTION =
-  "A bedtime story app that writes, illustrates and reads aloud a new story with your child as the hero. First 5 stories free, then $4.99 a month.";
-
 export const metadata: Metadata = {
-  ...marketingMetadata("/", TITLE, DESCRIPTION),
+  ...marketingMetadata("/", PAGE_META["/"].title, PAGE_META["/"].description),
   robots: { index: true, follow: true },
 };
 
@@ -301,6 +298,13 @@ export default function HomePage() {
           </div>
         </section>
         </div>
+
+        <nav className="section wrap guides" aria-label="Guides for parents">
+          <span className="guides__label">Guides</span>
+          <Link href="/best-bedtime-story-apps">Best bedtime story apps for kids</Link>
+          <Link href="/ai-bedtime-story-generator">Is an AI story generator safe?</Link>
+          <Link href="/best-personalized-bedtime-story-app">Personalized story apps</Link>
+        </nav>
 
         <section id="get" className="cta" aria-labelledby="cta-title">
           <Image src="/stories/bear_candles.jpg" alt="" width={1024} height={576} sizes="100vw" className="cta__bg" />
