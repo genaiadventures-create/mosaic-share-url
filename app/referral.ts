@@ -9,9 +9,19 @@ export function safeCode(value: unknown): string {
   return typeof value === "string" && /^[A-Za-z0-9_-]{1,64}$/.test(value) ? value : "";
 }
 
+// A campaign link is a channel plus up to three short lowercase slugs, e.g. "kdp-diwali" (the QR code
+// printed in a book). It belongs to its channel and is never a personal referral code.
+const CAMPAIGN = /^([a-z]{2,3})(?:-[a-z0-9]{1,24}){1,3}$/;
+
+export function channelOf(ref: unknown): string {
+  if (typeof ref !== "string") return "";
+  if (CHANNELS.has(ref)) return ref;
+  const match = CAMPAIGN.exec(ref);
+  return match && CHANNELS.has(match[1]) ? match[1] : "";
+}
+
 export function parseReferral(ref: unknown, code: unknown) {
-  const refStr = typeof ref === "string" ? ref : "";
-  const channel = CHANNELS.has(refStr) ? refStr : "";
+  const channel = channelOf(ref);
   // Legacy /get?ref=CODE (and root ?ref=CODE) remain supported.
   // An explicit code always wins, even when invalid: never turn a channel into a code.
   const hasExplicitCode = typeof code === "string" && code.length > 0;
