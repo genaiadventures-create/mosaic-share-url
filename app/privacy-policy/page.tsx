@@ -121,7 +121,7 @@ const PrivacyPolicy = () => {
             <li className="mb-1">Social media platforms (except when you explicitly choose to share)</li>
           </ul>
           <p className="mb-4 text-black leading-relaxed">
-            We do not sell your information or your child&apos;s information, and we do not use it for advertising.
+            We do not sell your information or your child&apos;s information, we do not share it for cross-context behavioral advertising, and we do not use it for advertising.
           </p>
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">We May Share Information With:</h3>
