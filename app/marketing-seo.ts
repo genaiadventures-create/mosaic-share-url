@@ -47,8 +47,9 @@ export const PAGE_DATES = {
   "/ai-bedtime-story-generator": "2026-11-23",
   "/mahabharata-story-for-kids-book": "2026-11-23",
   "/color-and-write-books-ages-5-8": "2026-11-23",
-  "/privacy-policy": "2026-11-13",
+  "/privacy-policy": "2026-11-25",
   "/terms-and-conditions": "2026-11-13",
+  "/support": "2026-11-25",
 } as const;
 
 export const SOCIAL_IMAGE = {

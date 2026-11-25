@@ -67,7 +67,7 @@ it("publishes the entity nodes, books, page, breadcrumb and visible FAQ on the b
 it("publishes a sitemap containing just canonical pages and page-specific dates", () => {
   const entries = sitemap();
   const paths = ["/", "/books", "/best-personalized-bedtime-story-app", "/best-bedtime-story-apps", "/ai-bedtime-story-generator", "/mahabharata-story-for-kids-book",
-    "/color-and-write-books-ages-5-8", "/privacy-policy", "/terms-and-conditions"];
+    "/color-and-write-books-ages-5-8", "/privacy-policy", "/terms-and-conditions", "/support"];
   assert.deepEqual(entries.map(({ url }) => url), paths.map((path) => SITE_URL + path));
   for (const { lastModified } of entries) {
     assert.match(String(lastModified), /^\d{4}-\d{2}-\d{2}$/);

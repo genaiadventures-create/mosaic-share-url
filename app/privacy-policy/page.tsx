@@ -18,12 +18,12 @@ const PrivacyPolicy = () => {
           <a href="https://mosaicai.in/best-personalized-bedtime-story-app" className="underline">How Mosaic works</a>
         </nav>
         <h1 className="text-3xl font-bold text-gray-900 mb-6">Privacy Policy for Mosaic AI Story Maker</h1>
-        <p className="text-sm text-gray-600 mb-8">Last updated: November 13, 2026</p>
+        <p className="text-sm text-gray-600 mb-8">Last updated: November 25, 2026</p>
         
         <div className="prose prose-lg max-w-none">
           <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-200 pb-2">Introduction</h2>
           <p className="mb-6 text-black leading-relaxed">
-            Mosaic AI Story Maker ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application (the "App").
+            Mosaic AI Story Maker ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application (the "App") and the Mosaic app inside ChatGPT (the "ChatGPT app", described in its own section below).
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-200 pb-2">Information We Collect</h2>
@@ -67,6 +67,49 @@ const PrivacyPolicy = () => {
             <li className="mb-1"><strong>Communication</strong>: Send important updates and notifications</li>
             <li className="mb-1"><strong>Analytics</strong>: Understand app usage patterns and optimize performance</li>
           </ul>
+
+          <h2 id="chatgpt-app" className="text-2xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-200 pb-2">Mosaic in ChatGPT (the ChatGPT app)</h2>
+
+          <p className="mb-4 text-black leading-relaxed">
+            Mosaic is also available as an app inside ChatGPT, which we run at chatgpt.mosaicai.in. It is for parents and guardians (adults) who want a bedtime story for their child. This section describes what the ChatGPT app handles. It is separate from the mobile App: a ChatGPT sign-in does not create or open a mobile App account, and the ChatGPT app does not see your mobile App stories, purchases, or subscription.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Without signing in</h3>
+          <ul className="list-disc pl-6 mb-4 text-black">
+            <li className="mb-1">You can read sample stories that we wrote in advance. We do not create an account, and nothing you say in ChatGPT is stored by us</li>
+            <li className="mb-1">To limit abuse, our server briefly counts requests per network address in memory. The count is not written to disk or to our logs and is discarded within an hour</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">When you sign in with Google</h3>
+          <ul className="list-disc pl-6 mb-4 text-black">
+            <li className="mb-1">Signing in happens on a Mosaic page, not in the chat, using Google Sign-In. We receive your Google account ID and email address. We never receive your Google password</li>
+            <li className="mb-1">We store that ID and email, your remaining story allowance (and when it refills), and the date the account was created. We use the email only to recognize your account and to answer support or deletion requests</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">When you create a story</h3>
+          <ul className="list-disc pl-6 mb-4 text-black">
+            <li className="mb-1"><strong>What we receive from ChatGPT</strong>: only the details ChatGPT passes to the tool: your child&apos;s first name (or a character name), a theme, and an optional style. We do not ask for or accept a child&apos;s age, birthday, school, address, photo, or any other child information. We do not receive the rest of your conversation</li>
+            <li className="mb-1"><strong>Story providers</strong>: the first name and theme are sent to Groq to write the story, and the finished story text (which contains the name) is sent to ElevenLabs to narrate it. Cover illustrations, if offered, are requested from an image provider using only the theme, never the name. These providers are bound by the policies linked under &quot;Service Providers We Use&quot;</li>
+            <li className="mb-1"><strong>What we store</strong>: the story text and title, its narration audio, and any cover, linked to your account. Only your account can reopen your stories. We do not share them, sell them, use them for advertising, or use them to train our own AI models</li>
+            <li className="mb-1">Our server logs record errors and counts. They are not designed to contain story text or names</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">ChatGPT and OpenAI</h3>
+          <p className="mb-4 text-black leading-relaxed">
+            ChatGPT is operated by OpenAI. Your conversation, and what ChatGPT sends to and receives from our app, are handled under OpenAI&apos;s own terms and privacy policy. You can disconnect Mosaic at any time in ChatGPT&apos;s app settings, which revokes the access we were given. Disconnecting does not by itself erase what we have stored; to erase it, use the deletion request below.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Where we keep it, for how long, and how to delete it</h3>
+          <ul className="list-disc pl-6 mb-4 text-black">
+            <li className="mb-1">ChatGPT app data is kept in a database on a server we run at Oracle Cloud in the United States (Phoenix), separate from the mobile App&apos;s database. Connections to it use HTTPS</li>
+            <li className="mb-1">We keep it until you ask us to delete it. To delete it, email <a href="mailto:support@mosaicai.in?subject=Delete%20my%20Mosaic%20ChatGPT%20app%20data" className="text-blue-600 hover:text-blue-800 underline">support@mosaicai.in</a> from the address you signed in with. We erase your account record, your email, all your stories, and their audio and images within 30 days and confirm by email</li>
+            <li className="mb-1">The sign-in page sets a short-lived cookie that is needed only to finish signing in. We do not use analytics or advertising cookies in the ChatGPT app</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Children</h3>
+          <p className="mb-4 text-black leading-relaxed">
+            The ChatGPT app is for adults. ChatGPT accounts are subject to OpenAI&apos;s age requirements, and we do not separately verify age in the ChatGPT app. Children do not use the connector or sign in; a parent enters only a first name or character name. We do not knowingly collect personal information from children. If you believe a child has given us information, contact us and we will delete it. This section does not claim any certification or approval of the ChatGPT app under children&apos;s privacy laws.
+          </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-200 pb-2">Information Sharing and Disclosure</h2>
           
@@ -252,7 +295,7 @@ const PrivacyPolicy = () => {
 
           <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-200 pb-2">Effective Date</h2>
           <p className="mb-8 text-black leading-relaxed">
-            This Privacy Policy is effective as of November 13, 2026 and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page.
+            This Privacy Policy is effective as of November 25, 2026 and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page.
           </p>
 
           <div className="border-t border-gray-200 pt-6 mt-8">
