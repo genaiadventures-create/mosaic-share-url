@@ -37,6 +37,17 @@ describe("referral utilities", () => {
       assert.deepEqual(parseReferral("yt", undefined), { channel: "yt", referralCode: "" });
       assert.deepEqual(parseReferral("ig", ""), { channel: "ig", referralCode: "" });
     });
+    it("treats a campaign link (channel-slug, as printed in book QR codes) as its channel, never as a code", () => {
+      assert.deepEqual(parseReferral("kdp-diwali", undefined), { channel: "kdp", referralCode: "" });
+      assert.deepEqual(parseReferral("kdp-greatrace", ""), { channel: "kdp", referralCode: "" });
+      assert.deepEqual(parseReferral("ig-reel-lily", undefined), { channel: "ig", referralCode: "" });
+    });
+    it("keeps codes that only look like campaigns as codes", () => {
+      assert.deepEqual(parseReferral("zz-diwali", undefined), { channel: "", referralCode: "zz-diwali" });
+      assert.deepEqual(parseReferral("KDP-DIWALI", undefined), { channel: "", referralCode: "KDP-DIWALI" });
+      assert.deepEqual(parseReferral("ABCD2345", undefined), { channel: "", referralCode: "ABCD2345" });
+      assert.deepEqual(parseReferral("kdp-", undefined), { channel: "", referralCode: "kdp-" });
+    });
     it("explicit code wins over channel-looking ref", () => {
       assert.deepEqual(parseReferral("yt", "MYCODE"), { channel: "", referralCode: "MYCODE" });
     });
