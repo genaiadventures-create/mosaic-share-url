@@ -60,7 +60,16 @@ npm run start
 
 ## Deployment
 
-Auto-deployed on Vercel from the main branch. No environment variables required.
+Auto-deployed on Vercel from the main branch. No environment variables are required.
+
+Optional, to count campaign clicks on `/get?ref=<channel>` (see `app/ref-click.ts`, `middleware.ts`):
+
+| Variable | Purpose |
+|---|---|
+| `REF_CLICK_ENDPOINT` | `https://…/api/metrics/ref-click` on the MOSAIC backend. Unset = feature off, no request is made. |
+| `REF_CLICK_TOKEN` | Optional shared secret, sent as `Authorization: Bearer …` so only this site can bump the counter. |
+
+The middleware runs for `/get` only and sends a server-to-server `POST {ref, dest}` (1.5 s timeout, errors swallowed, never delays the page). No script, cookie, IP or user agent is stored or forwarded; bots, prefetches and HEAD requests are skipped.
 
 ## Stack
 
