@@ -117,7 +117,7 @@ function PhoneMockup({
 }) {
   return (
     <div
-      className={`w-40 md:w-52 bg-[#1a0b2e] rounded-3xl overflow-hidden flex-shrink-0 ${
+      className={`w-40 min-w-0 md:w-52 bg-[#1a0b2e] rounded-3xl overflow-hidden md:shrink-0 ${
         offset
           ? "-mt-4 shadow-2xl shadow-[#B793FF]/20 border border-[#B793FF]/40"
           : "shadow-xl shadow-[#7c3aed]/20 border border-[#7c3aed]/30"
