@@ -32,22 +32,22 @@ const PrivacyPolicy = () => {
           <ul className="list-disc pl-6 mb-4 text-black">
             <li className="mb-1"><strong>Name and Email</strong>: When you create an account or sign in using Google/Apple</li>
             <li className="mb-1"><strong>Child Information</strong>: Your child&apos;s name or nickname, gender, age group, interests, and a short description of the story&apos;s main character, entered by you to personalize stories</li>
-            <li className="mb-1"><strong>Profile Data</strong>: User preferences and settings</li>
+            <li className="mb-1"><strong>Profile Data</strong>: User preferences and settings, your device&apos;s time zone, and the campaign channel (for example Instagram or YouTube) and any referral code you arrived or signed up with</li>
             <li className="mb-1"><strong>Purchase Information</strong>: Subscriptions are bought through the Apple App Store or Google Play and managed through RevenueCat. We receive your subscription status, not your card details</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Usage Information</h3>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1"><strong>Story Content</strong>: AI-generated stories, their illustrations and narration audio, and which chapters have been played</li>
+            <li className="mb-1"><strong>Story Content</strong>: AI-generated stories, their illustrations and narration audio, and which chapters you have played and when (your listening history)</li>
             <li className="mb-1"><strong>App Usage</strong>: Features used, time spent, and interaction patterns</li>
             <li className="mb-1"><strong>Device Information</strong>: Device type, operating system, and app version</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Automatically Collected Information</h3>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1"><strong>Log Data</strong>: App crashes, performance metrics, and error reports</li>
-            <li className="mb-1"><strong>Analytics</strong>: Usage statistics and app performance data</li>
-            <li className="mb-1"><strong>Cookies and Similar Technologies</strong>: For app functionality and personalization</li>
+            <li className="mb-1"><strong>Log Data</strong>: Our servers keep request and error logs: the request address, response status and timing and, for errors, your IP address, device or browser type and the error text</li>
+            <li className="mb-1"><strong>Analytics</strong>: The app uses Firebase Analytics, a Google service, to record app opens, the screens you view and key actions (such as opening or creating a story, playing narration, seeing the subscription screen and purchase results, including story IDs), together with your device type, operating system, app version, whether you subscribe and, if you came from a campaign link, which channel. Firebase also assigns the app installation an identifier. While you are signed in, these events are linked to an analytics ID that is a one-way hash of your email address; it is not anonymous. We turn off Google&apos;s advertising and ad personalization options for this data, and we do not put your child&apos;s name, story text or your email address in analytics events. In the current app version, analytics starts when the app opens, before the adult confirmation screen</li>
+            <li className="mb-1"><strong>Cookies and Similar Technologies</strong>: Our share website (share.mosaicai.in) sets one first-party cookie, <code>mosaic_ref</code>, only when you arrive from a campaign link (for example <code>?ref=ig</code> or <code>?ref=yt</code>). It holds the name of the channel that sent you, lasts 30 days, and is used only to count which channels lead to app installs and sign-ups. It is not used for advertising and is not shared with advertisers. We add the same channel name to the App Store, Google Play and app links so the app can record it if you sign up. Visiting the site without a campaign link sets no cookie. Older referral-code links are kept only in your browser&apos;s session storage for that tab. We do not use advertising or third-party tracking cookies on our websites</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-200 pb-2">How We Use Your Information</h2>
@@ -121,7 +121,7 @@ const PrivacyPolicy = () => {
             <li className="mb-1">Social media platforms (except when you explicitly choose to share)</li>
           </ul>
           <p className="mb-4 text-black leading-relaxed">
-            We do not sell your information or your child&apos;s information, and we do not use it for advertising.
+            We do not sell your information or your child&apos;s information, we do not share it for cross-context behavioral advertising, and we do not use it for advertising.
           </p>
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">We May Share Information With:</h3>
@@ -149,7 +149,7 @@ const PrivacyPolicy = () => {
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Information About Children</h3>
           <ul className="list-disc pl-6 mb-4 text-black">
             <li className="mb-1">Mosaic is designed for parents. Accounts are for adults 18+; children use Mosaic with a parent</li>
-            <li className="mb-1">The app asks you to confirm your age before you create an account</li>
+            <li className="mb-1">The app asks you to confirm that you are an adult (18 or older) before you set up a profile. That confirmation is stored on your device only; we do not keep a record of it on our servers</li>
             <li className="mb-1">Information about your child is provided by you, the parent. We do not collect information directly from children, and children do not create accounts</li>
             <li className="mb-1">Child information is used only to create and play your stories</li>
             <li className="mb-1">Stories you create are private to your account by default</li>
@@ -160,7 +160,7 @@ const PrivacyPolicy = () => {
           <ul className="list-disc pl-6 mb-4 text-black">
             <li className="mb-1">We do not sell children&apos;s data or use it for advertising or marketing</li>
             <li className="mb-1">We do not use children&apos;s data to train our own AI models</li>
-            <li className="mb-1">Our server logs record account and story IDs and counts, not your child&apos;s name, gender, age group, interests, or character description</li>
+            <li className="mb-1">Our server logs record request addresses, account and story IDs, status codes, timing and counts and, for errors, the IP address, device or browser type and error text. They are not designed to contain your child&apos;s name, gender, age group, interests, or character description</li>
           </ul>
 
 <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-200 pb-2">Data Retention</h2>
@@ -169,19 +169,20 @@ const PrivacyPolicy = () => {
           <ul className="list-disc pl-6 mb-4 text-black">
             <li className="mb-1"><strong>Account and Child Information</strong>: Until you delete your account, or until the account has been inactive for 24 months</li>
             <li className="mb-1"><strong>Stories, Illustrations, and Narration Audio</strong>: Until you delete the story or your account, or until the account has been inactive for 24 months</li>
-            <li className="mb-1"><strong>Support Messages</strong>: Kept so we can answer and follow up on your request</li>
+            <li className="mb-1"><strong>Support Messages</strong>: Kept in our database and in our support mailbox so we can answer and follow up on your request. We have not set an automatic deletion date for them</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Deletion After 24 Months of Inactivity</h3>
           <p className="mb-4 text-black leading-relaxed">
-            We check accounts every day. If an account has had no activity for 24 months, we delete it automatically. This removes the account, your child&apos;s information, all of your stories, and their illustrations and narration audio from our media storage, the same as when you delete your account yourself. An account counts as active from the last time you used the app while signed in or, if we have no record of that, from when you created the account or your newest story. Accounts with an active paid subscription are not deleted for inactivity.
+            We check accounts every day. If an account has had no activity for 24 months, we delete it automatically. This removes the account, your child&apos;s information, all of your stories, and their illustrations and narration audio from our media storage, the same as when you delete your account yourself (see &quot;Data Deletion&quot; below for what this does and does not cover). An account counts as active from the most recent of: the last time you used the app while signed in, the last time you played a story, when you created the account, and your newest story. Accounts with an active paid subscription are not deleted for inactivity.
           </p>
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Data Deletion</h3>
           <ul className="list-disc pl-6 mb-4 text-black">
             <li className="mb-1">You can delete your account in the app. This deletes your account, your child&apos;s information, all of your stories, and their illustrations and narration audio</li>
             <li className="mb-1">Deleting a single story also deletes its illustrations and narration audio</li>
-            <li className="mb-1">Deleted data is permanently removed from our systems</li>
+            <li className="mb-1">Your account record, your child&apos;s information and your stories are removed from our database at the time of deletion. In the same step we ask Cloudinary to delete their illustrations and narration audio. If that request fails, the files can remain in Cloudinary, because we do not yet retry it automatically. If you think something remains, email <a href="mailto:support@mosaicai.in" className="text-blue-600 hover:text-blue-800 underline">support@mosaicai.in</a></li>
+            <li className="mb-1">Deleting your account does not remove support messages you sent us, our server logs, analytics data held by Google through Firebase, purchase records held by Apple, Google Play and RevenueCat, or data held by the other providers listed below, which is governed by their own policies</li>
             <li className="mb-1">Some data may be retained for legal compliance purposes</li>
           </ul>
 
@@ -191,15 +192,14 @@ const PrivacyPolicy = () => {
           <ul className="list-disc pl-6 mb-4 text-black">
             <li className="mb-1"><strong>View Data</strong>: Access your personal information through the app</li>
             <li className="mb-1"><strong>Update Information</strong>: Modify your profile and preferences</li>
-            <li className="mb-1"><strong>Delete Account</strong>: Remove your account and all associated data</li>
+            <li className="mb-1"><strong>Delete Account</strong>: Remove your account, your child&apos;s information and your stories (see &quot;Data Deletion&quot; for what is not removed)</li>
             <li className="mb-1"><strong>Data Portability</strong>: Request a copy of your data</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Communication Preferences</h3>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1"><strong>Email Notifications</strong>: Opt out of promotional emails</li>
+            <li className="mb-1"><strong>Email</strong>: We do not currently send promotional or marketing emails. We email you only in reply to support requests you send us</li>
             <li className="mb-1"><strong>Push Notifications</strong>: Control app notifications in device settings</li>
-            <li className="mb-1"><strong>Marketing Communications</strong>: Unsubscribe from marketing messages</li>
           </ul>
 
           <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-200 pb-2">Third-Party Services</h2>
@@ -209,19 +209,21 @@ const PrivacyPolicy = () => {
             We share information only with the service providers below, and only so they can provide their service to us. None of them may use the data for advertising. Where a provider offers API settings that do not allow training on our data, we use those settings. The link next to each provider leads to its data or privacy policy.
           </p>
           <ul className="list-disc pl-6 mb-4 text-black">
-            <li className="mb-1"><strong>OpenAI</strong>: Story text generation and images, and narration (OpenAI TTS). Receives the story details you enter and the story text (<a href="https://platform.openai.com/docs/guides/your-data" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">OpenAI API data policy</a>)</li>
-            <li className="mb-1"><strong>Groq</strong>: Story text generation and images. Receives the story details you enter and the story text (<a href="https://console.groq.com/docs/your-data" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Groq API data policy</a>)</li>
-            <li className="mb-1"><strong>Google Gemini</strong>: Text generation, if configured. Receives the story details you enter (<a href="https://ai.google.dev/gemini-api/terms" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Gemini API terms</a>)</li>
-            <li className="mb-1"><strong>ElevenLabs</strong>: Narration. Receives the story text (<a href="https://elevenlabs.io/privacy-policy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">ElevenLabs privacy policy</a>)</li>
-            <li className="mb-1"><strong>Cloudinary</strong>: Media storage and delivery. Stores story illustrations and narration audio (<a href="https://cloudinary.com/privacy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Cloudinary privacy policy</a>)</li>
+            <li className="mb-1"><strong>OpenAI</strong>: Story text generation, cover illustrations and narration (OpenAI text-to-speech). Receives the story details you enter, the story text, and a scene description for the cover image (<a href="https://platform.openai.com/docs/guides/your-data" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">OpenAI API data policy</a>)</li>
+            <li className="mb-1"><strong>Groq</strong>: Story text generation (in the Mosaic ChatGPT app, and in the mobile app if we select it) and, if selected, narration. Receives the story details you enter and, for narration, the story text (<a href="https://console.groq.com/docs/your-data" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Groq API data policy</a>)</li>
+            <li className="mb-1"><strong>Google Gemini</strong>: Cover illustrations and narration in the Mosaic ChatGPT app, if configured. Receives the theme (illustrations) or the story text (narration) (<a href="https://ai.google.dev/gemini-api/terms" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Gemini API terms</a>)</li>
+            <li className="mb-1"><strong>ElevenLabs</strong>: Narration in the Mosaic ChatGPT app, if configured. Receives the story text (<a href="https://elevenlabs.io/privacy-policy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">ElevenLabs privacy policy</a>)</li>
+            <li className="mb-1"><strong>Cloudinary</strong>: Media storage and delivery. Stores story illustrations and narration audio, which are delivered through web links: anyone who has the link to a file can open it (<a href="https://cloudinary.com/privacy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Cloudinary privacy policy</a>)</li>
             <li className="mb-1"><strong>MongoDB Atlas</strong>: Database. Stores account and story data (<a href="https://www.mongodb.com/legal/privacy/privacy-policy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">MongoDB privacy policy</a>)</li>
             <li className="mb-1"><strong>Oracle Cloud</strong>: Hosting for our app servers (<a href="https://www.oracle.com/legal/privacy/" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Oracle privacy policy</a>)</li>
             <li className="mb-1"><strong>Vercel</strong>: Hosting for this website (<a href="https://vercel.com/legal/privacy-notice" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Vercel privacy notice</a>)</li>
-            <li className="mb-1"><strong>Firebase and Google Sign-In</strong>: Authentication. Firebase also stores app request and error logs, which include account IDs and, for errors, IP addresses (<a href="https://firebase.google.com/support/privacy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Firebase privacy information</a>)</li>
+            <li className="mb-1"><strong>Google Sign-In</strong>: Authentication (<a href="https://policies.google.com/privacy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Google privacy policy</a>)</li>
+            <li className="mb-1"><strong>Firebase (Google)</strong>: Analytics in the app (see &quot;Analytics&quot; above), and request and error logs from our servers, which include the request address, status and timing, an account ID on some events and, for errors, IP addresses, device or browser type and error text (<a href="https://firebase.google.com/support/privacy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Firebase privacy information</a>)</li>
             <li className="mb-1"><strong>Sign in with Apple</strong>: Authentication (<a href="https://www.apple.com/legal/privacy/" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Apple privacy policy</a>)</li>
             <li className="mb-1"><strong>RevenueCat</strong>: Subscriptions and payments. Receives an account ID and purchase records, not your child&apos;s information (<a href="https://www.revenuecat.com/privacy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">RevenueCat privacy policy</a>)</li>
             <li className="mb-1"><strong>Apple App Store and Google Play</strong>: Subscriptions and payments (<a href="https://www.apple.com/legal/privacy/" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Apple privacy policy</a>, <a href="https://policies.google.com/privacy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Google privacy policy</a>)</li>
-            <li className="mb-1"><strong>Expo push service</strong>: Notifications. Receives your device&apos;s push token and the reminder text, which does not include your child&apos;s name (<a href="https://expo.dev/privacy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Expo privacy policy</a>)</li>
+            <li className="mb-1"><strong>Email service (SMTP)</strong>: Support requests. When you send a support request from the app, we store it and forward it by email through our email service provider, which receives your message and email address</li>
+            <li className="mb-1"><strong>Expo push service</strong>: Remote notifications, only if you turn on push reminders. It would receive your device&apos;s push token and the reminder text, which does not include your child&apos;s name. The bedtime reminder in the app is scheduled on your device and is not sent through Expo (<a href="https://expo.dev/privacy" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">Expo privacy policy</a>)</li>
           </ul>
 
 <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4 border-b border-gray-200 pb-2">International Data Transfers</h2>
@@ -255,7 +257,6 @@ const PrivacyPolicy = () => {
           <ul className="list-disc pl-6 mb-4 text-black">
             <li className="mb-1"><strong>Email</strong>: <a href="mailto:support@mosaicai.in" className="text-blue-600 hover:text-blue-800 underline">support@mosaicai.in</a></li>
             <li className="mb-1"><strong>Support</strong>: Available through the app's support feature</li>
-            <li className="mb-1"><strong>Address</strong>: [Your Business Address]</li>
           </ul>
 
           <h3 className="text-xl font-semibold text-gray-800 mt-6 mb-3">Data Protection Officer</h3>
